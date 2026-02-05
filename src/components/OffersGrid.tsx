@@ -65,7 +65,7 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
               </h3>
               
               {/* Description */}
-              <p className="md-body mt-4 flex-1">
+              <p className="md-body mt-4 line-clamp-4 flex-1">
                 {o.description}
               </p>
               
@@ -73,7 +73,7 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
               {o.link && (
                 <a
                   href={o.link.href}
-                  className={`group mt-6 inline-flex w-fit items-center gap-2 ${isPartnerOffer ? "md-btn md-btn-partner" : "md-btn md-btn-accent"}`}
+                  className={`group mt-6 inline-flex w-fit items-center gap-2 ${isPartnerOffer ? "md-btn md-btn-partner" : "md-btn md-btn-primary"}`}
                 >
                   {o.link.label}
                   <ArrowIcon />

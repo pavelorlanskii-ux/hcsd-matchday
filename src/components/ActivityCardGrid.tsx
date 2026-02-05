@@ -166,26 +166,26 @@ export function ActivityCardGrid({
                 ))}
               </div>
 
-              {/* Title - full text, no clamp */}
-              <h3 className="md-title-card mt-4 text-[var(--md-text-primary)]">
+              {/* Title - 2 lines max for uniform height */}
+              <h3 className="md-title-card mt-4 line-clamp-2 min-h-[3.5rem] text-[var(--md-text-primary)]">
                 {a.title}
               </h3>
               
-              {/* Description - full text, grows to fill space */}
-              <p className="md-body-sm mt-2.5 min-h-0 flex-1">
+              {/* Description - 3 lines max, grows to fill space */}
+              <p className="md-body-sm mt-2.5 line-clamp-3 min-h-[4.5rem] flex-1">
                 {a.description}
               </p>
 
               {/* Footer: Location + Tags - pinned to bottom */}
-              <div className="mt-auto border-t border-[var(--md-border-subtle)] pt-4">
-                {/* Location - full text, no truncate */}
+              <div className="mt-5 border-t border-[var(--md-border-subtle)] pt-4">
+                {/* Location */}
                 <div className="flex items-start gap-2 md-body-sm text-[var(--md-text-muted)]">
                   <LocationIcon />
-                  <span>{a.location}</span>
+                  <span className="line-clamp-1">{a.location}</span>
                 </div>
 
                 {/* Tags */}
-                <div className="mt-2.5 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-2">
                   {a.tags.map((t: ActivityTag) => (
                     <span key={t} className="md-badge md-badge-turq">
                       {t}
@@ -200,7 +200,7 @@ export function ActivityCardGrid({
 
       {/* Empty state */}
       {filtered.length === 0 && (
-        <div className="mt-10 rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-1)] p-10 text-center">
+        <div className="mt-10 rounded-lg border border-[var(--md-border)] bg-[var(--md-surface-1)] p-10 text-center">
           <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--md-surface-2)]">
             <svg 
               width="24" 

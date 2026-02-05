@@ -83,8 +83,8 @@ export function MatchCard(props: {
         </div>
 
         {/* Teams Block - Vertical layout: logo above name */}
-        <div className="bg-[var(--md-surface-2)]/80 px-5 py-6">
-          <div className="flex items-start justify-between gap-3">
+        <div className="rounded-sm border border-[var(--md-border-subtle)] px-5 py-6" style={{ background: 'rgba(36, 51, 82, 0.8)' }}>
+          <div className="flex items-center justify-between gap-3">
             {/* Home Team */}
             <div className="flex min-w-0 flex-1 flex-col items-center text-center">
               <div className="flex h-16 w-16 items-center justify-center">
@@ -96,14 +96,14 @@ export function MatchCard(props: {
                   className="h-16 w-16 object-contain"
                 />
               </div>
-              <div className="md-meta mt-2">Хозяева</div>
-              <div className="mt-1 min-h-[3.5rem] line-clamp-2 md-team-name text-[var(--md-text-primary)]">
+              <div className="md-meta mt-2.5">Хозяева</div>
+              <div className="mt-1 min-h-[2.75rem] line-clamp-2 md-team-name text-[var(--md-text-primary)]">
                 {homeName}
               </div>
             </div>
 
-            {/* VS Divider */}
-            <div className="mt-4 flex h-10 w-10 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
+            {/* VS Divider - centered between teams */}
+            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
               <span className="md-vs text-[var(--md-text-muted)]">VS</span>
             </div>
 
@@ -118,8 +118,8 @@ export function MatchCard(props: {
                   className="h-16 w-16 object-contain"
                 />
               </div>
-              <div className="md-meta mt-2">Гости</div>
-              <div className="mt-1 min-h-[3.5rem] line-clamp-2 md-team-name text-[var(--md-text-primary)]">
+              <div className="md-meta mt-2.5">Гости</div>
+              <div className="mt-1 min-h-[2.75rem] line-clamp-2 md-team-name text-[var(--md-text-primary)]">
                 {awayName}
               </div>
             </div>
@@ -127,7 +127,7 @@ export function MatchCard(props: {
         </div>
 
         {/* Countdown */}
-        <div className="mt-5 border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-5">
+        <div className="mt-5 border border-[var(--md-border)] p-5" style={{ background: 'rgba(36, 51, 82, 0.6)' }}>
           <div className="md-label mb-3 text-center">До матча осталось</div>
           {!isMatchStarted ? (
             <div className="md-countdown">
@@ -148,7 +148,7 @@ export function MatchCard(props: {
 
         {/* CTA Buttons */}
         <div className="mt-5 flex flex-col gap-3">
-          <a href={props.buyHref} className="md-btn md-btn-primary md-btn-xl w-full">
+          <a href={props.buyHref} className="md-btn md-btn-primary md-btn-lg w-full">
             Купить билеты
           </a>
           <a href={props.homeHref} className="md-btn md-btn-secondary md-btn-lg w-full">
@@ -176,43 +176,43 @@ export function MatchCard(props: {
           </div>
 
           {/* Middle Column: Teams - vertical layout with logos above names */}
-          <div className="min-w-0 flex-1 bg-[var(--md-surface-2)]/80 px-5 py-5">
-            <div className="flex items-start justify-center gap-5">
+          <div className="min-w-0 flex-1 rounded-sm border border-[var(--md-border-subtle)] px-6 py-5" style={{ background: 'rgba(36, 51, 82, 0.8)' }}>
+            <div className="flex items-center justify-center gap-6">
               {/* Home Team - vertical: logo -> label -> name */}
-              <div className="flex w-[200px] min-w-0 flex-col items-center text-center">
-                <div className="flex h-[92px] w-[92px] items-center justify-center">
+              <div className="flex w-[180px] min-w-0 flex-col items-center text-center">
+                <div className="flex h-[88px] w-[88px] items-center justify-center">
                   <Image
                     src={CLUB_LOGO}
                     alt={homeName}
-                    width={92}
-                    height={92}
-                    className="h-[92px] w-[92px] object-contain"
+                    width={88}
+                    height={88}
+                    className="h-[88px] w-[88px] object-contain"
                   />
                 </div>
-                <div className="md-meta mt-1.5">Хозяева</div>
-                <div className="mt-0.5 min-h-[3.25rem] line-clamp-2 md-team-name text-[var(--md-text-primary)]">
+                <div className="md-meta mt-2">Хозяева</div>
+                <div className="mt-1 min-h-[3rem] line-clamp-2 md-team-name text-[var(--md-text-primary)]">
                   {homeName}
                 </div>
               </div>
 
-              {/* VS Divider */}
-              <div className="mt-8 flex h-10 w-10 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
+              {/* VS Divider - vertically centered */}
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
                 <span className="md-vs text-[var(--md-text-muted)]">VS</span>
               </div>
 
               {/* Away Team - vertical: logo -> label -> name */}
-              <div className="flex w-[200px] min-w-0 flex-col items-center text-center">
-                <div className="flex h-[92px] w-[92px] items-center justify-center">
+              <div className="flex w-[180px] min-w-0 flex-col items-center text-center">
+                <div className="flex h-[88px] w-[88px] items-center justify-center">
                   <Image
                     src={OPPONENT_LOGO}
                     alt={awayName}
-                    width={80}
-                    height={80}
-                    className="h-20 w-20 object-contain"
+                    width={88}
+                    height={88}
+                    className="h-[88px] w-[88px] object-contain"
                   />
                 </div>
-                <div className="md-meta mt-1.5">Гости</div>
-                <div className="mt-0.5 min-h-[3.25rem] line-clamp-2 md-team-name text-[var(--md-text-primary)]">
+                <div className="md-meta mt-2">Гости</div>
+                <div className="mt-1 min-h-[3rem] line-clamp-2 md-team-name text-[var(--md-text-primary)]">
                   {awayName}
                 </div>
               </div>
@@ -222,7 +222,7 @@ export function MatchCard(props: {
           {/* Right Column: Countdown + CTAs */}
           <div className="w-[260px] flex-shrink-0">
             {/* Countdown */}
-            <div className="border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
+            <div className="border border-[var(--md-border)] p-4" style={{ background: 'rgba(36, 51, 82, 0.6)' }}>
               <div className="md-label mb-2 text-center">До матча</div>
               {!isMatchStarted ? (
                 <div className="md-countdown">

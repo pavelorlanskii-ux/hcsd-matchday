@@ -178,6 +178,7 @@ body {
 
 .md-card:hover {
   border-color: var(--md-border-hover);
+  box-shadow: var(--md-shadow-sm);
 }
 
 .md-card-featured {
@@ -190,6 +191,7 @@ body {
 
 .md-card-featured:hover {
   border-color: rgba(255, 107, 0, 0.6);
+  box-shadow: var(--md-shadow-glow-partner);
 }
 
 .md-card-hero {
@@ -227,6 +229,11 @@ body {
 
 .md-btn:active {
   transform: scale(0.98);
+}
+
+.md-btn:focus-visible {
+  outline: 2px solid var(--md-dragons-orange);
+  outline-offset: 2px;
 }
 
 .md-btn-lg {
@@ -355,6 +362,11 @@ body {
   border-color: var(--md-border-hover);
   background: rgba(255, 255, 255, 0.08);
   color: var(--md-text-primary);
+}
+
+.md-chip:focus-visible {
+  outline: 2px solid var(--md-dragons-orange);
+  outline-offset: 2px;
 }
 
 .md-chip-active {
@@ -688,7 +700,7 @@ html {
   font-weight: var(--md-font-bold);
   color: var(--md-text-muted);
   opacity: 0.5;
-  margin-top: -0.25rem;
+  align-self: center;
   flex-shrink: 0;
 }
 

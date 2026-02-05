@@ -39,10 +39,11 @@ function OddPill({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="group flex flex-1 flex-col items-center justify-center rounded-lg border border-[var(--md-border)] bg-[var(--md-surface-2)]/80 px-3 py-3 transition-all hover:border-[var(--md-partner-accent)]/40 hover:bg-[var(--md-surface-3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--md-partner-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--md-surface-1)] active:scale-[0.97] sm:px-5 sm:py-4"
+      className="group flex min-w-[5.5rem] flex-1 flex-col items-center justify-center border border-[var(--md-border)] px-3 py-3 transition-all hover:border-[rgba(255,107,0,0.4)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--md-partner-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--md-surface-1)] active:scale-[0.97] sm:min-w-[6.5rem] sm:px-5 sm:py-4"
+      style={{ background: 'rgba(36, 51, 82, 0.8)' }}
     >
       <span className="md-label text-[var(--md-text-muted)]">{label}</span>
-      <span className="mt-1 font-[var(--font-horta)] text-[var(--md-font-size-xl)] font-bold tabular-nums text-[var(--md-partner-accent)] transition-colors group-hover:text-[var(--md-partner-accent-light)] sm:mt-1.5 sm:text-[var(--md-font-size-2xl)]">
+      <span className="mt-1.5 font-[var(--font-horta)] text-[var(--md-font-size-xl)] font-bold tabular-nums text-[var(--md-partner-accent)] transition-colors group-hover:text-[var(--md-partner-accent-light)] sm:mt-2 sm:text-[var(--md-font-size-2xl)]">
         {formatOdd(value)}
       </span>
     </a>
@@ -78,7 +79,7 @@ export function PartnerOddsBar({
   return (
     <div className={`md-card-featured overflow-hidden ${className || ""}`}>
       {/* Featured badge header */}
-      <div className="flex items-center justify-between border-b border-[var(--md-partner-accent)]/15 bg-gradient-to-r from-[var(--md-partner-accent)]/8 to-transparent px-4 py-2.5 sm:px-5 sm:py-3">
+      <div className="flex items-center justify-between px-4 py-2.5 sm:px-5 sm:py-3" style={{ borderBottom: '1px solid rgba(255, 107, 0, 0.15)', background: 'linear-gradient(to right, rgba(255, 107, 0, 0.08), transparent)' }}>
         <span className="md-badge md-badge-partner text-[10px] sm:text-[11px]">
           <StarIcon />
           Партнёр матча
@@ -90,7 +91,7 @@ export function PartnerOddsBar({
       <div className="flex flex-col gap-3 p-4 sm:gap-4 sm:p-5 lg:hidden">
         {/* Partner Info */}
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[var(--md-partner-accent)]/10 sm:h-12 sm:w-12">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center sm:h-12 sm:w-12" style={{ background: 'rgba(255, 107, 0, 0.1)' }}>
             <Image
               src={BETBOOM_LOGO}
               alt="BetBoom"
@@ -143,7 +144,7 @@ export function PartnerOddsBar({
         <div className="flex items-center justify-between gap-8">
           {/* Partner Info */}
           <div className="flex items-center gap-5">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[var(--md-partner-accent)]/10">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center" style={{ background: 'rgba(255, 107, 0, 0.1)' }}>
               <Image
                 src={BETBOOM_LOGO}
                 alt="BetBoom"
