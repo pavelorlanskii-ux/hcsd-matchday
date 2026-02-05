@@ -223,14 +223,6 @@ export function Footer() {
         </div>
       </div>
 
-          {/* Credits */}
-          <div className="flex items-center gap-2 text-[13px] text-white/60 lg:text-sm">
-            <span>Создание сайта</span>
-            <span className="font-semibold text-white/80">2Dit</span>
-          </div>
-        </div>
-      </div>
-
       {/* Orange Bottom Line */}
       <div className="h-1 w-full bg-[#e85d04]" aria-hidden="true" />
     </footer>
