@@ -100,7 +100,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#1a2744]">
-      <div className="mx-auto flex h-14 max-w-[1440px] items-center justify-between px-4 lg:h-16 lg:px-6">
+      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 lg:h-[72px] lg:px-8">
         {/* Left: Grid button + Logo */}
         <div className="flex items-center gap-3 lg:gap-4">
           {/* Grid/Menu Button */}
@@ -123,27 +123,27 @@ export function Header() {
             <Image
               src="/logo_dragons.png"
               alt="Шанхай Дрэгонс"
-              width={48}
-              height={48}
-              className="h-10 w-10 object-contain lg:h-11 lg:w-11"
+              width={56}
+              height={56}
+              className="h-11 w-11 object-contain lg:h-[52px] lg:w-[52px]"
             />
             <Image
               src="/dragons_name.svg"
               alt="SHANGHAI DRAGONS"
-              width={126}
-              height={36}
-              className="hidden h-8 w-auto sm:block lg:h-9"
+              width={140}
+              height={40}
+              className="hidden h-9 w-auto sm:block lg:h-10"
             />
           </a>
         </div>
 
         {/* Center: Navigation (Desktop) */}
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Основная навигация">
+        <nav className="hidden items-center gap-2 xl:flex" aria-label="Основная навигация">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="px-3 py-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
+              className="px-4 py-2 text-[15px] font-medium text-white/90 transition-colors hover:text-white"
             >
               {item.label}
             </a>
@@ -153,12 +153,12 @@ export function Header() {
         {/* Right: Lang + CTAs + Social */}
         <div className="flex items-center gap-2 lg:gap-3">
           {/* Language Switcher */}
-          <div className="hidden items-center gap-1 text-sm lg:flex">
+          <div className="hidden items-center gap-2 text-[15px] xl:flex">
             <button
               type="button"
               onClick={() => setLang("ru")}
               className={`px-1 py-0.5 font-medium transition-colors ${
-                lang === "ru" ? "text-white" : "text-white/50 hover:text-white/70"
+                lang === "ru" ? "text-white" : "text-white/40 hover:text-white/70"
               }`}
             >
               Ру
@@ -167,7 +167,7 @@ export function Header() {
               type="button"
               onClick={() => setLang("en")}
               className={`px-1 py-0.5 font-medium transition-colors ${
-                lang === "en" ? "text-white" : "text-white/50 hover:text-white/70"
+                lang === "en" ? "text-white" : "text-white/40 hover:text-white/70"
               }`}
             >
               En
@@ -175,14 +175,14 @@ export function Header() {
           </div>
 
           {/* CTA Buttons (Desktop) */}
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden items-center gap-2 xl:flex">
             {CTA_BUTTONS.map((btn) => (
               <a
                 key={btn.label}
                 href={btn.href}
-                className={`flex h-8 items-center justify-center px-4 text-xs font-bold uppercase tracking-wide transition-colors ${
+                className={`flex h-9 items-center justify-center px-5 text-[13px] font-bold uppercase tracking-wider transition-colors ${
                   btn.variant === "vip"
-                    ? "bg-white text-[#1a2744] hover:bg-white/90"
+                    ? "border border-white/20 bg-white text-[#e85d04] hover:bg-white/90"
                     : btn.variant === "tickets"
                     ? "bg-[#e85d04] text-white hover:bg-[#f07b2f]"
                     : "bg-[#f5a623] text-[#1a2744] hover:bg-[#ffc107]"
@@ -194,17 +194,17 @@ export function Header() {
           </div>
 
           {/* Social Icons (Desktop) */}
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className="hidden items-center gap-1 xl:flex">
             {SOCIAL_LINKS.map((social) => (
               <a
                 key={social.icon}
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-8 w-8 items-center justify-center text-white/70 transition-colors hover:text-white"
+                className="flex h-9 w-9 items-center justify-center text-white/80 transition-colors hover:text-white"
                 aria-label={social.label}
               >
-                {social.icon === "vk" ? <VKIcon className="h-5 w-5" /> : <TelegramIcon className="h-5 w-5" />}
+                {social.icon === "vk" ? <VKIcon className="h-[22px] w-[22px]" /> : <TelegramIcon className="h-[22px] w-[22px]" />}
               </a>
             ))}
           </div>
@@ -213,7 +213,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-9 w-9 items-center justify-center text-white/70 transition-colors hover:text-white lg:hidden"
+            className="flex h-9 w-9 items-center justify-center text-white/70 transition-colors hover:text-white xl:hidden"
             aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
             aria-expanded={mobileOpen}
           >
@@ -227,7 +227,7 @@ export function Header() {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 top-14 z-40 bg-black/50 lg:top-16"
+            className="fixed inset-0 top-16 z-40 bg-black/50 xl:top-[72px]"
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
@@ -235,7 +235,7 @@ export function Header() {
           {/* Mobile Menu Panel */}
           <div
             ref={menuRef}
-            className="fixed inset-0 top-14 z-50 overflow-y-auto bg-[#1a2744] lg:top-16"
+            className="fixed inset-0 top-16 z-50 overflow-y-auto bg-[#1a2744] xl:top-[72px]"
             role="dialog"
             aria-modal="true"
             aria-label="Мобильное меню"
