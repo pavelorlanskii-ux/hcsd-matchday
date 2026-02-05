@@ -55,12 +55,14 @@ export function HighlightBanner({ highlight }: HighlightBannerProps) {
 
           {/* Content */}
           <div className="flex-1">
-            {/* Badge - hidden on mobile (shown in header row above), visible on md+ */}
-            {highlight.badge && (
-              <span className="md-badge md-badge-turq hidden md:inline-flex">
-                {highlight.badge}
-              </span>
-            )}
+            {/* Badge - only rendered on md+ (mobile badge is in the header row above) */}
+            <div className="hidden md:block">
+              {highlight.badge && (
+                <span className="md-badge md-badge-turq">
+                  {highlight.badge}
+                </span>
+              )}
+            </div>
 
             {/* Title */}
             <h2 className="md-headline-section mt-4 text-balance text-[var(--md-text-primary)]">
