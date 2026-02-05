@@ -47,7 +47,7 @@ export function HighlightBanner({ highlight }: HighlightBannerProps) {
           
           {/* Description */}
           {highlight.description && (
-            <p className="mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-[var(--md-text-secondary)] md:text-base md:leading-relaxed">
+            <p className="md-subtitle mt-4 max-w-2xl text-pretty">
               {highlight.description}
             </p>
           )}

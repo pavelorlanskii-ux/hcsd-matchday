@@ -179,7 +179,7 @@ export function Footer() {
           <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4 lg:gap-x-12">
             {NAV_COLUMNS.map((column) => (
               <div key={column.title}>
-                <h3 className="mb-4 text-[15px] font-bold uppercase tracking-wide text-[#e85d04] lg:mb-5 lg:text-base">
+                <h3 className="md-footer-heading mb-4 lg:mb-5">
                   {column.title}
                 </h3>
                 <ul className="space-y-2.5 lg:space-y-3">
@@ -187,7 +187,7 @@ export function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-[14px] text-white/80 transition-colors hover:text-white lg:text-[15px]"
+                        className="md-footer-link"
                       >
                         {link.label}
                       </a>
@@ -236,7 +236,7 @@ export function Footer() {
       <div className="relative z-10 border-t border-white/10">
         <div className="mx-auto flex max-w-[1400px] items-center px-6 py-5 lg:px-12">
           {/* Copyright */}
-          <div className="text-[13px] text-white/60 lg:text-sm">
+          <div className="text-[0.8125rem] leading-relaxed text-[var(--md-text-muted)] lg:text-[0.875rem]">
             &copy; {currentYear} Хоккейный клуб «Шанхай Дрэгонс»
           </div>
         </div>

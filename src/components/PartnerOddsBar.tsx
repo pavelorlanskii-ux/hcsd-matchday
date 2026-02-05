@@ -42,7 +42,7 @@ function OddPill({
       className="group flex min-w-[72px] flex-col items-center justify-center rounded-lg border border-[var(--md-border)] bg-[var(--md-surface-2)]/80 px-3 py-2.5 transition-all hover:border-[var(--md-partner-accent)]/40 hover:bg-[var(--md-surface-3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--md-partner-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--md-surface-1)] active:scale-[0.97] sm:min-w-[80px] sm:px-4 sm:py-3"
     >
       <span className="md-meta text-[var(--md-text-muted)]">{label}</span>
-      <span className="mt-1 text-lg font-bold tabular-nums text-[var(--md-partner-accent)] transition-colors group-hover:text-[var(--md-partner-accent-light)] sm:text-xl">
+      <span className="md-data mt-1 text-[var(--md-partner-accent)] transition-colors group-hover:text-[var(--md-partner-accent-light)]">
         {formatOdd(value)}
       </span>
     </a>
@@ -105,7 +105,7 @@ export function PartnerOddsBar({
               href={partner.url}
               target="_blank"
               rel="noreferrer"
-              className="mt-0.5 block text-lg font-bold text-[var(--md-text-primary)] transition-colors hover:text-[var(--md-partner-accent)]"
+              className="md-title-card mt-1 block text-[var(--md-text-primary)] transition-colors hover:text-[var(--md-partner-accent)]"
             >
               {partner.logoText || partner.name}
             </a>
@@ -133,7 +133,7 @@ export function PartnerOddsBar({
         </a>
 
         {/* Disclaimer */}
-        <div className="text-[11px] leading-relaxed text-[var(--md-text-muted)]">
+        <div className="text-[0.6875rem] leading-relaxed text-[var(--md-text-disabled)]">
           {disclaimer}
         </div>
       </div>
@@ -158,7 +158,7 @@ export function PartnerOddsBar({
                 href={partner.url}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-1 block text-xl font-bold text-[var(--md-text-primary)] transition-colors hover:text-[var(--md-partner-accent)]"
+                className="mt-1 block font-[var(--font-horta)] text-[1.375rem] tracking-[0.03em] text-[var(--md-text-primary)] transition-colors hover:text-[var(--md-partner-accent)]"
               >
                 {partner.logoText || partner.name}
               </a>
@@ -185,7 +185,7 @@ export function PartnerOddsBar({
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-4 border-t border-[var(--md-border-subtle)] pt-3 text-xs text-[var(--md-text-muted)]">
+        <div className="mt-4 border-t border-[var(--md-border-subtle)] pt-3 text-[0.75rem] leading-relaxed text-[var(--md-text-disabled)]">
           {disclaimer}
         </div>
       </div>

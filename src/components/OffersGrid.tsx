@@ -65,7 +65,7 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
               </h3>
               
               {/* Description */}
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--md-text-secondary)] sm:text-base sm:leading-relaxed">
+              <p className="md-body mt-3 flex-1">
                 {o.description}
               </p>
               

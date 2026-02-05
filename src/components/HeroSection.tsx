@@ -36,7 +36,7 @@ export function HeroSection({ title, subtitle, partnerName, children }: HeroSect
             </h1>
             
             {/* Subtitle with better spacing */}
-            <p className="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-[var(--md-text-secondary)] md:mt-5 md:text-base md:leading-relaxed lg:text-lg lg:leading-relaxed">
+            <p className="md-subtitle mt-4 max-w-xl text-pretty md:mt-5 lg:text-base">
               {subtitle}
             </p>
           </div>
