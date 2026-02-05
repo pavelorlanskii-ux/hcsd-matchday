@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import type { Activity, ActivityBadge, ActivityTag } from "@/data/matchday";
@@ -117,24 +118,41 @@ export function ActivityCardGrid({
             key={a.id}
             className="md-card group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-0.5"
           >
-            {/* Image placeholder with gradient */}
+            {/* Image area */}
             <div className="relative aspect-[16/10] bg-gradient-to-br from-[var(--md-surface-2)] to-[var(--md-surface-3)]">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-12 w-12 rounded-full bg-[var(--md-surface-1)]/50 flex items-center justify-center">
-                  <svg 
-                    className="h-6 w-6 text-[var(--md-text-muted)]" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="1.5"
+              {a.image ? (
+                <>
+                  <Image
+                    src={a.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={false}
+                  />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-[var(--md-bg)]/55 via-transparent to-transparent"
                     aria-hidden="true"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <path d="m21 15-5-5L5 21"/>
-                  </svg>
+                  />
+                </>
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--md-surface-1)]/50">
+                    <svg 
+                      className="h-6 w-6 text-[var(--md-text-muted)]" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="1.5"
+                      aria-hidden="true"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <path d="m21 15-5-5L5 21"/>
+                    </svg>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             
             {/* Content */}

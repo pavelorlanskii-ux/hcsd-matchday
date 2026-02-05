@@ -31,45 +31,44 @@ export function HighlightBanner({ highlight }: HighlightBannerProps) {
 
       <div className="relative z-10 p-5 sm:p-6 md:p-8">
         <div className="flex flex-col md:flex-row md:items-start md:gap-8">
-          {/* Content */}
-          <div className="flex-1">
-            {/* Badge */}
-            {highlight.badge && (
-              <span className="md-badge md-badge-turq">
-                {highlight.badge}
-              </span>
-            )}
-            
-            {/* Title */}
-            <h2 className="md-headline-section mt-4 text-balance text-[var(--md-text-primary)]">
-              {highlight.title}
-            </h2>
-            
-            {/* Description */}
-            {highlight.description && (
-              <p className="mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-[var(--md-text-secondary)] md:text-base md:leading-relaxed">
-                {highlight.description}
-              </p>
-            )}
-          </div>
+        {/* Content */}
+        <div className="flex-1">
+          {/* Badge */}
+          {highlight.badge && (
+            <span className="md-badge md-badge-turq">
+              {highlight.badge}
+            </span>
+          )}
+          
+          {/* Title */}
+          <h2 className="md-headline-section mt-4 text-balance text-[var(--md-text-primary)]">
+            {highlight.title}
+          </h2>
+          
+          {/* Description */}
+          {highlight.description && (
+            <p className="mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-[var(--md-text-secondary)] md:text-base md:leading-relaxed">
+              {highlight.description}
+            </p>
+          )}
+        </div>
 
-          {/* Optional visual indicator */}
-          <div className="mt-6 flex shrink-0 items-center justify-center md:mt-0">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[var(--md-dragons-turq)]/30 bg-[var(--md-dragons-turq)]/10 md:h-20 md:w-20">
-              <svg 
-                className="h-8 w-8 text-[var(--md-dragons-turq)] md:h-10 md:w-10" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="1.5"
-                aria-hidden="true"
-              >
-                <path d="M9 18V5l12-2v13"/>
-                <circle cx="6" cy="18" r="3"/>
-                <circle cx="18" cy="16" r="3"/>
-              </svg>
-            </div>
+        {/* Optional visual indicator */}
+        <div className="mt-6 flex shrink-0 items-center justify-center md:mt-0">
+          <div
+            className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[var(--md-dragons-turq)]/30 bg-[var(--md-dragons-turq)]/10 md:h-20 md:w-20"
+            aria-hidden="true"
+          >
+            <Image
+              src="/ornaments/dragons.png"
+              alt=""
+              fill
+              sizes="56px"
+              unoptimized
+              className="opacity-100 object-contain drop-shadow [filter:brightness(0)_invert(1)]"
+            />
           </div>
+        </div>
         </div>
       </div>
     </article>

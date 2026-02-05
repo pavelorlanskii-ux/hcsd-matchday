@@ -108,7 +108,7 @@ export default function Page() {
           </section>
 
           {/* Program Section */}
-          <section id="program" className="py-8 md:py-10">
+          <section id="program" className="pb-4 pt-8 md:pb-6 md:pt-10">
             <SectionHeader
               title="Программа вечера"
               subtitle="Фильтруйте по интересам и ориентирам. Все активности работают в указанное время."
@@ -122,11 +122,8 @@ export default function Page() {
             </div>
           </section>
 
-          {/* Visual Divider */}
-          <div className="md-partner-divider mx-auto my-8 max-w-[180px] md:my-10" aria-hidden="true" />
-
           {/* Offers Section */}
-          <section id="offers" className="py-8 md:py-10">
+          <section id="offers" className="pb-8 pt-4 md:pb-10 md:pt-6">
             <SectionHeader
               title="Специальные предложения"
               subtitle="Партнерские предложения и бонусы для болельщиков."

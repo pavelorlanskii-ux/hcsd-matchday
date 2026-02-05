@@ -32,12 +32,12 @@ export const matchday = {
     logoText: "BetBoom", // placeholder
   },
   match: {
-    title: "ХК Шанхай Дрэгонс - ХК ЦСКА (Москва)",
-    leftMetaLines: ["5 фев. (чт), 19:30", "Континентальная хоккейная лига", "СКА Арена"],
-    matchDateIso: "2026-02-05T19:30:00+03:00",
+    title: "ХК Шанхай Дрэгонс - ХК Локомотив (Ярославль)",
+    leftMetaLines: ["10 фев. (вт), 19:30", "Континентальная хоккейная лига", "СКА Арена"],
+    matchDateIso: "2026-02-10T19:30:00+03:00",
     teams: {
       home: { name: "ХК Шанхай Дрэгонс", logoText: "DRAGONS" },
-      away: { name: "ХК ЦСКА (Москва)", logoText: "CSKA (Moskva)" },
+      away: { name: "ХК Локомотив (Ярославль)", logoText: "LOKO" },
     },
     ctaBuy: { label: "Купить билеты", href: "#tickets" },
     ctaHome: { label: "На главную", href: "/" },
@@ -69,7 +69,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["До матча"],
       tags: ["С детьми", "Фото"],
-      image: "/window.svg",
+      image: "/activities/photos/aqua-zone.jpg",
     },
     {
       id: "posters",
@@ -78,7 +78,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["До матча"],
       tags: ["Фото"],
-      image: "/file.svg",
+      image: "/activities/photos/fan-posters.jpg",
     },
     {
       id: "air",
@@ -87,7 +87,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["До матча"],
       tags: ["Фото"],
-      image: "/globe.svg",
+      image: "/activities/photos/airbrush.jpg",
     },
     {
       id: "hair",
@@ -96,7 +96,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["До матча"],
       tags: ["Фото"],
-      image: "/vercel.svg",
+      image: "/activities/photos/fan-hair.jpg",
     },
     {
       id: "stickers",
@@ -105,7 +105,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["Весь вечер"],
       tags: ["Фото"],
-      image: "/file.svg",
+      image: "/activities/photos/mood-stickers.jpg",
     },
     {
       id: "gaming",
@@ -114,7 +114,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["До матча"],
       tags: ["С детьми"],
-      image: "/window.svg",
+      image: "/activities/photos/game-zone.jpg",
     },
     {
       id: "wishes",
@@ -123,7 +123,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["Весь вечер"],
       tags: ["Фото"],
-      image: "/globe.svg",
+      image: "/activities/photos/wish-wall.jpg",
     },
     {
       id: "photozone",
@@ -132,7 +132,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["Весь вечер"],
       tags: ["Фото"],
-      image: "/next.svg",
+      image: "/activities/photos/photozone-5.jpg",
     },
     {
       id: "kidsroom",
@@ -141,7 +141,7 @@ export const matchday = {
       location: "Детская зона",
       badges: ["Весь вечер"],
       tags: ["С детьми"],
-      image: "/vercel.svg",
+      image: "/activities/photos/kids-room.jpg",
     },
     {
       id: "bookhouse1",
@@ -150,7 +150,7 @@ export const matchday = {
       location: "Творческая зона",
       badges: ["До матча"],
       tags: ["С детьми"],
-      image: "/file.svg",
+      image: "/activities/photos/dragon-masterclass.jpg",
     },
     {
       id: "bookhouse2",
@@ -159,7 +159,7 @@ export const matchday = {
       location: "Творческая зона",
       badges: ["До матча"],
       tags: ["С детьми"],
-      image: "/globe.svg",
+      image: "/activities/photos/book-messages.jpg",
     },
     {
       id: "quiz",
@@ -168,7 +168,7 @@ export const matchday = {
       location: "Фойе стадиона и чаша стадиона",
       badges: ["До матча", "В перерывах"],
       tags: ["Призы"],
-      image: "/window.svg",
+      image: "/activities/photos/quiz-prizes.jpg",
     },
     {
       id: "dj",
@@ -177,7 +177,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["До матча"],
       tags: ["Музыка"],
-      image: "/next.svg",
+      image: "/activities/photos/dj-sets.jpg",
     },
     {
       id: "host",
@@ -186,7 +186,7 @@ export const matchday = {
       location: "Фойе стадиона",
       badges: ["До матча"],
       tags: ["Призы"],
-      image: "/vercel.svg",
+      image: "/activities/photos/host-interactive.jpg",
     },
     {
       id: "drummer",
@@ -195,7 +195,7 @@ export const matchday = {
       location: "Чаша стадиона",
       badges: ["В перерывах"],
       tags: ["Музыка"],
-      image: "/globe.svg",
+      image: "/activities/photos/drummer-show.jpg",
     },
   ] as Activity[],
   offers: [
