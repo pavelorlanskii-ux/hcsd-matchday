@@ -149,9 +149,9 @@ export function MatchCard(props: {
 
       {/* Desktop Layout */}
       <div className="hidden p-5 lg:block lg:p-6">
-        <div className="grid grid-cols-[1fr_1.4fr_280px] items-center gap-5">
+        <div className="flex items-center gap-4">
           {/* Left Column: Meta Info */}
-          <div className="pr-3">
+          <div className="w-[180px] flex-shrink-0">
             <div className="text-xl font-bold tracking-tight text-[var(--md-text-primary)]">
               {props.leftMetaLines[0]}
             </div>
@@ -165,23 +165,23 @@ export function MatchCard(props: {
             </div>
           </div>
 
-          {/* Middle Column: Teams */}
-          <div className="bg-[var(--md-surface-2)]/80 px-4 py-3">
-            <div className="flex items-center justify-between gap-4">
+          {/* Middle Column: Teams - flex-1 to fill all available space */}
+          <div className="min-w-0 flex-1 bg-[var(--md-surface-2)]/80 px-5 py-4">
+            <div className="flex items-center gap-5">
               {/* Home Team */}
-              <div className="flex min-w-0 flex-1 items-center gap-3">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-[var(--md-surface-3)]">
+              <div className="flex min-w-0 flex-1 items-center gap-4">
+                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center bg-[var(--md-surface-3)]">
                   <Image
                     src={CLUB_LOGO}
                     alt={homeName}
-                    width={48}
-                    height={48}
-                    className="h-12 w-12 object-contain"
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="md-meta">Хозяева</div>
-                  <div className="mt-0.5 line-clamp-2 text-base font-bold leading-tight text-[var(--md-text-primary)]">
+                  <div className="md-meta text-[11px]">Хозяева</div>
+                  <div className="mt-1 line-clamp-2 text-lg font-bold leading-snug text-[var(--md-text-primary)]">
                     {homeName}
                   </div>
                 </div>
@@ -193,14 +193,14 @@ export function MatchCard(props: {
               </div>
 
               {/* Away Team */}
-              <div className="flex min-w-0 flex-1 items-center justify-end gap-3">
+              <div className="flex min-w-0 flex-1 items-center justify-end gap-4">
                 <div className="min-w-0 flex-1 text-right">
-                  <div className="md-meta">Гости</div>
-                  <div className="mt-0.5 line-clamp-2 text-base font-bold leading-tight text-[var(--md-text-primary)]">
+                  <div className="md-meta text-[11px]">Гости</div>
+                  <div className="mt-1 line-clamp-2 text-lg font-bold leading-snug text-[var(--md-text-primary)]">
                     {awayName}
                   </div>
                 </div>
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-[var(--md-surface-3)] text-xs font-bold text-[var(--md-text-secondary)]">
+                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center bg-[var(--md-surface-3)] text-sm font-bold text-[var(--md-text-secondary)]">
                   {props.awayLogoText.slice(0, 4).toUpperCase()}
                 </div>
               </div>
@@ -208,7 +208,7 @@ export function MatchCard(props: {
           </div>
 
           {/* Right Column: Countdown + CTAs */}
-          <div className="w-full max-w-[280px] pl-3">
+          <div className="w-[260px] flex-shrink-0">
             {/* Countdown */}
             <div className="border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-3">
               <div className="md-meta mb-1.5 text-center text-[10px]">До матча</div>
