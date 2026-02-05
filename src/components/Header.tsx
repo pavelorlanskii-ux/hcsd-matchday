@@ -3,59 +3,18 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
-const CLUB_LOGO = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_shanghai_dragons-rpqZlKvYrjv48TTGb7Qc3pkrbDbzZJ.png";
-
-const NAV_GROUPS = [
-  {
-    label: "Новости",
-    href: "https://hc-dragons.com/news",
-    items: [
-      { label: "Все новости", href: "https://hc-dragons.com/news" },
-      { label: "Пресс-релизы", href: "https://hc-dragons.com/news/press" },
-    ],
-  },
-  {
-    label: "Команда",
-    href: "https://hc-dragons.com/team",
-    items: [
-      { label: "Состав", href: "https://hc-dragons.com/team/roster" },
-      { label: "Тренерский штаб", href: "https://hc-dragons.com/team/coaches" },
-      { label: "Статистика", href: "https://hc-dragons.com/team/stats" },
-    ],
-  },
-  {
-    label: "Клуб",
-    href: "https://hc-dragons.com/club",
-    items: [
-      { label: "О клубе", href: "https://hc-dragons.com/club/about" },
-      { label: "История", href: "https://hc-dragons.com/club/history" },
-      { label: "Арена", href: "https://hc-dragons.com/club/arena" },
-    ],
-  },
-  {
-    label: "Сезон",
-    href: "https://hc-dragons.com/season",
-    items: [
-      { label: "Календарь", href: "https://hc-dragons.com/season/calendar" },
-      { label: "Турнирная таблица", href: "https://hc-dragons.com/season/standings" },
-      { label: "Результаты", href: "https://hc-dragons.com/season/results" },
-    ],
-  },
-  {
-    label: "Медиа",
-    href: "https://hc-dragons.com/media",
-    items: [
-      { label: "Фото", href: "https://hc-dragons.com/media/photo" },
-      { label: "Видео", href: "https://hc-dragons.com/media/video" },
-      { label: "Подкасты", href: "https://hc-dragons.com/media/podcasts" },
-    ],
-  },
+const NAV_ITEMS = [
+  { label: "Новости", href: "https://hc-dragons.com/news" },
+  { label: "Команда", href: "https://hc-dragons.com/team" },
+  { label: "Клуб", href: "https://hc-dragons.com/club" },
+  { label: "Сезон", href: "https://hc-dragons.com/season" },
+  { label: "Медиа", href: "https://hc-dragons.com/media" },
 ];
 
-const UTILITY_LINKS = [
-  { label: "VIP", href: "https://hc-dragons.com/vip" },
-  { label: "Билеты", href: "#tickets", primary: true },
-  { label: "Магазин", href: "https://hc-dragons.com/shop" },
+const CTA_BUTTONS = [
+  { label: "VIP", href: "https://hc-dragons.com/vip", variant: "vip" as const },
+  { label: "БИЛЕТЫ", href: "#tickets", variant: "tickets" as const },
+  { label: "МАГАЗИН", href: "https://hc-dragons.com/shop", variant: "shop" as const },
 ];
 
 const SOCIAL_LINKS = [
@@ -63,36 +22,65 @@ const SOCIAL_LINKS = [
   { label: "Telegram", href: "https://t.me/hcdragons", icon: "tg" },
 ];
 
-function ChevronDown({ className }: { className?: string }) {
+function GridIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg className={className} width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <circle cx="4" cy="4" r="1.5" />
+      <circle cx="10" cy="4" r="1.5" />
+      <circle cx="16" cy="4" r="1.5" />
+      <circle cx="4" cy="10" r="1.5" />
+      <circle cx="10" cy="10" r="1.5" />
+      <circle cx="16" cy="10" r="1.5" />
+      <circle cx="4" cy="16" r="1.5" />
+      <circle cx="10" cy="16" r="1.5" />
+      <circle cx="16" cy="16" r="1.5" />
     </svg>
   );
 }
 
-function MenuIcon({ open }: { open: boolean }) {
+function SearchIcon({ className }: { className?: string }) {
   return (
-    <div className="relative h-5 w-5">
-      <span className={`absolute left-0 h-0.5 w-5 bg-current transition-all duration-200 ${open ? "top-2 rotate-45" : "top-0"}`} />
-      <span className={`absolute left-0 top-2 h-0.5 w-5 bg-current transition-all duration-200 ${open ? "opacity-0" : ""}`} />
-      <span className={`absolute left-0 h-0.5 w-5 bg-current transition-all duration-200 ${open ? "top-2 -rotate-45" : "top-4"}`} />
-    </div>
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
+  );
+}
+
+function CloseIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  );
+}
+
+function VKIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.77 19.05c-6.05 0-9.5-4.15-9.65-11.05h3.03c.1 5.05 2.32 7.18 4.08 7.62V8h2.86v4.35c1.73-.19 3.55-2.18 4.16-4.35h2.86c-.47 2.67-2.45 4.66-3.86 5.48 1.41.65 3.67 2.37 4.52 5.57h-3.15c-.66-2.06-2.3-3.65-4.53-3.87v3.87h-.32z"/>
+    </svg>
+  );
+}
+
+function TelegramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    </svg>
   );
 }
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const [lang, setLang] = useState<"ru" | "en">("ru");
-  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setMobileOpen(false);
-        setOpenDropdown(null);
       }
     };
     document.addEventListener("keydown", handleEscape);
@@ -110,248 +98,274 @@ export function Header() {
     };
   }, [mobileOpen]);
 
-  const handleMouseEnter = (label: string) => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-    }
-    setOpenDropdown(label);
-  };
-
-  const handleMouseLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setOpenDropdown(null);
-    }, 150);
-  };
-
   return (
-    <header className="relative z-50 sticky top-0 border-b border-[var(--md-border)] bg-[var(--md-bg)]/95 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[var(--md-container)] items-center justify-between px-4 py-2 md:px-6 lg:px-8">
-        {/* Logo */}
-        <a
-          href="https://hc-dragons.com"
-          className="flex items-center gap-3 transition-opacity hover:opacity-80"
-          aria-label="ХК Шанхай Дрэгонс - На главную"
-        >
-          <Image
-            src={CLUB_LOGO}
-            alt="Шанхай Дрэгонс"
-            width={48}
-            height={48}
-            className="h-11 w-11 object-contain md:h-12 md:w-12"
-          />
-          <div className="hidden sm:block">
-            <div className="text-sm font-bold leading-tight text-[var(--md-text-primary)]">Шанхай</div>
-            <div className="text-[11px] font-semibold uppercase tracking-wide text-[var(--md-dragons-orange)]">Дрэгонс</div>
-          </div>
-        </a>
+    <header className="sticky top-0 z-50 w-full bg-[#1a2744]">
+      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 xl:h-[80px] xl:px-8">
+        {/* Left: Grid button + Logo */}
+        <div className="flex items-center gap-3 xl:gap-5">
+          {/* Grid/Menu Button */}
+          <button
+            type="button"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="flex h-9 w-9 items-center justify-center text-white/70 transition-colors hover:text-white"
+            aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
+            aria-expanded={mobileOpen}
+          >
+            <GridIcon className="h-5 w-5" />
+          </button>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Основная навигация">
-          {NAV_GROUPS.map((group) => (
-            <div
-              key={group.label}
-              className="relative"
-              onMouseEnter={() => handleMouseEnter(group.label)}
-              onMouseLeave={handleMouseLeave}
+          {/* Logo */}
+          <a
+            href="https://hc-dragons.com"
+            className="flex items-center gap-2 transition-opacity hover:opacity-90"
+            aria-label="ХК Шанхай Дрэгонс - На главную"
+          >
+            <Image
+              src="/logo_dragons.png"
+              alt="Шанхай Дрэгонс"
+              width={60}
+              height={60}
+              className="h-11 w-11 object-contain xl:h-[60px] xl:w-[60px]"
+            />
+            <Image
+              src="/dragons_name.svg"
+              alt="SHANGHAI DRAGONS"
+              width={160}
+              height={44}
+              className="hidden h-9 w-auto sm:block xl:h-[44px]"
+            />
+          </a>
+        </div>
+
+        {/* Center: Navigation (Desktop) */}
+        <nav className="hidden items-center gap-1 xl:flex" aria-label="Основная навигация">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="px-5 py-2 text-[19px] font-normal leading-[1.2] text-white/90 transition-colors hover:text-white"
+              style={{ fontFamily: "Roboto, sans-serif" }}
             >
-              <button
-                type="button"
-                className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                  openDropdown === group.label
-                    ? "bg-[var(--md-surface-2)] text-[var(--md-dragons-orange)]"
-                    : "text-[var(--md-text-secondary)] hover:text-[var(--md-text-primary)]"
-                }`}
-                aria-expanded={openDropdown === group.label}
-                aria-haspopup="true"
-              >
-                {group.label}
-                <ChevronDown className={`transition-transform ${openDropdown === group.label ? "rotate-180" : ""}`} />
-              </button>
-              
-              {openDropdown === group.label && (
-                <div className="absolute left-0 top-full z-50 min-w-[180px] pt-2">
-                  <div className="rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-1)] p-1.5 shadow-lg">
-                    {group.items.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        className="block rounded-lg px-3 py-2 text-sm text-[var(--md-text-secondary)] transition-colors hover:bg-[var(--md-surface-2)] hover:text-[var(--md-text-primary)]"
-                      >
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+              {item.label}
+            </a>
           ))}
         </nav>
 
-        {/* Utility Links + Social + Language - Desktop */}
-        <div className="hidden items-center gap-2 lg:flex">
-          {UTILITY_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={
-                link.primary
-                  ? "md-btn md-btn-primary"
-                  : "md-btn md-btn-secondary"
-              }
+        {/* Right: Lang + CTAs + Social */}
+        <div className="flex items-center gap-2 xl:gap-4">
+          {/* Language Switcher */}
+          <div className="hidden items-center gap-3 text-[17px] xl:flex">
+            <button
+              type="button"
+              onClick={() => setLang("ru")}
+              className={`py-0.5 font-normal transition-colors ${
+                lang === "ru" ? "text-white" : "text-white/40 hover:text-white/70"
+              }`}
             >
-              {link.label}
-            </a>
-          ))}
+              Ру
+            </button>
+            <button
+              type="button"
+              onClick={() => setLang("en")}
+              className={`py-0.5 font-normal transition-colors ${
+                lang === "en" ? "text-white" : "text-white/40 hover:text-white/70"
+              }`}
+            >
+              En
+            </button>
+          </div>
 
-          <div className="mx-2 h-5 w-px bg-[var(--md-border)]" aria-hidden="true" />
+          {/* CTA Buttons (Desktop) */}
+          <div className="hidden items-center gap-[6px] xl:flex">
+            {CTA_BUTTONS.map((btn) => (
+              <a
+                key={btn.label}
+                href={btn.href}
+                className={`flex h-[47px] w-[107px] items-center justify-center text-[15px] font-bold uppercase tracking-wide transition-colors ${
+                  btn.variant === "vip"
+                    ? "bg-white text-[#e85d04] hover:bg-white/90"
+                    : btn.variant === "tickets"
+                    ? "bg-[#e85d04] text-white hover:bg-[#f07b2f]"
+                    : "bg-[#f5a623] text-[#1a2744] hover:bg-[#ffc107]"
+                }`}
+              >
+                {btn.label}
+              </a>
+            ))}
+          </div>
 
-          {/* Social */}
-          <div className="flex items-center gap-1">
+          {/* Social Icons (Desktop) */}
+          <div className="hidden items-center gap-2 xl:flex">
             {SOCIAL_LINKS.map((social) => (
               <a
                 key={social.icon}
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-[var(--md-text-muted)] transition-colors hover:text-[var(--md-dragons-orange)]"
+                className="flex h-10 w-10 items-center justify-center text-white/80 transition-colors hover:text-white"
                 aria-label={social.label}
               >
-                {social.icon === "vk" && (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12.77 19.05c-6.05 0-9.5-4.15-9.65-11.05h3.03c.1 5.05 2.32 7.18 4.08 7.62V8h2.86v4.35c1.73-.19 3.55-2.18 4.16-4.35h2.86c-.47 2.67-2.45 4.66-3.86 5.48 1.41.65 3.67 2.37 4.52 5.57h-3.15c-.66-2.06-2.3-3.65-4.53-3.87v3.87h-.32z"/>
-                  </svg>
-                )}
-                {social.icon === "tg" && (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2s-.16-.04-.23-.02c-.1.02-1.62 1.03-4.58 3.03-.43.3-.82.44-1.17.43-.39-.01-1.13-.22-1.68-.4-.68-.22-1.22-.34-1.17-.72.02-.2.31-.4.87-.6 3.45-1.5 5.75-2.49 6.9-2.97 3.29-1.37 3.97-1.61 4.42-1.62.1 0 .32.02.46.13.12.09.15.21.17.3-.01.06.01.24 0 .37z"/>
-                  </svg>
-                )}
+                {social.icon === "vk" ? <VKIcon className="h-6 w-6" /> : <TelegramIcon className="h-6 w-6" />}
               </a>
             ))}
           </div>
 
-          {/* Language */}
+          {/* Mobile: Grid Button (shows same as left on desktop, hidden on mobile since left one opens menu) */}
           <button
             type="button"
-            onClick={() => setLang(lang === "ru" ? "en" : "ru")}
-            className="flex h-9 items-center gap-1 rounded-lg border border-[var(--md-border)] px-2.5 text-sm font-medium text-[var(--md-text-secondary)] transition-colors hover:border-[var(--md-border-hover)] hover:bg-[var(--md-surface-1)]"
-            aria-label={`Переключить язык на ${lang === "ru" ? "English" : "Русский"}`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="flex h-9 w-9 items-center justify-center text-white/70 transition-colors hover:text-white xl:hidden"
+            aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
+            aria-expanded={mobileOpen}
           >
-            {lang === "ru" ? "Ru" : "En"}
-            <ChevronDown />
+            <GridIcon className="h-5 w-5" />
           </button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--md-text-primary)] transition-colors hover:bg-[var(--md-surface-1)] lg:hidden"
-          aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
-          aria-expanded={mobileOpen}
-        >
-          <MenuIcon open={mobileOpen} />
-        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {mobileOpen && (
         <>
+          {/* Backdrop */}
           <div
-            className="fixed inset-0 top-[57px] z-40 bg-[var(--md-bg)]/80 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 top-16 z-40 bg-black/50 xl:top-[80px]"
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
-          <nav
-            className="fixed left-0 right-0 top-[57px] z-50 max-h-[calc(100vh-57px)] overflow-y-auto border-b border-[var(--md-border)] bg-[var(--md-surface-1)] lg:hidden"
-            aria-label="Мобильная навигация"
+          
+          {/* Mobile Menu Panel */}
+          <div
+            ref={menuRef}
+            className="fixed inset-0 top-16 z-50 overflow-y-auto bg-[#1a2744] xl:top-[80px]"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Мобильное меню"
           >
-            <div className="p-4">
-              {/* Utility Links Mobile */}
-              <div className="mb-4 flex flex-wrap gap-2">
-                {UTILITY_LINKS.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={
-                      link.primary
-                        ? "md-btn md-btn-primary md-btn-lg flex-1"
-                        : "md-btn md-btn-secondary md-btn-lg flex-1"
-                    }
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-
-              {/* Navigation Groups */}
-              <div className="space-y-1.5">
-                {NAV_GROUPS.map((group) => (
-                  <div key={group.label} className="overflow-hidden rounded-xl border border-[var(--md-border)] bg-[var(--md-bg)]">
-                    <button
-                      type="button"
-                      onClick={() => setMobileAccordion(mobileAccordion === group.label ? null : group.label)}
-                      className="flex w-full items-center justify-between px-4 py-3.5 text-left text-base font-medium text-[var(--md-text-primary)]"
-                      aria-expanded={mobileAccordion === group.label}
-                    >
-                      {group.label}
-                      <ChevronDown className={`transition-transform ${mobileAccordion === group.label ? "rotate-180" : ""}`} />
-                    </button>
-                    {mobileAccordion === group.label && (
-                      <div className="border-t border-[var(--md-border)] bg-[var(--md-surface-2)] px-4 py-2">
-                        {group.items.map((item) => (
-                          <a
-                            key={item.label}
-                            href={item.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-lg px-2 py-2.5 text-sm text-[var(--md-text-secondary)] transition-colors hover:text-[var(--md-text-primary)]"
-                          >
-                            {item.label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Social + Language Mobile */}
-              <div className="mt-4 flex items-center justify-between border-t border-[var(--md-border)] pt-4">
-                <div className="flex items-center gap-2">
-                  {SOCIAL_LINKS.map((social) => (
-                    <a
-                      key={social.icon}
-                      href={social.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--md-border)] text-[var(--md-text-muted)] transition-colors hover:text-[var(--md-dragons-orange)]"
-                      aria-label={social.label}
-                    >
-                      {social.icon === "vk" && (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                          <path d="M12.77 19.05c-6.05 0-9.5-4.15-9.65-11.05h3.03c.1 5.05 2.32 7.18 4.08 7.62V8h2.86v4.35c1.73-.19 3.55-2.18 4.16-4.35h2.86c-.47 2.67-2.45 4.66-3.86 5.48 1.41.65 3.67 2.37 4.52 5.57h-3.15c-.66-2.06-2.3-3.65-4.53-3.87v3.87h-.32z"/>
-                        </svg>
-                      )}
-                      {social.icon === "tg" && (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2s-.16-.04-.23-.02c-.1.02-1.62 1.03-4.58 3.03-.43.3-.82.44-1.17.43-.39-.01-1.13-.22-1.68-.4-.68-.22-1.22-.34-1.17-.72.02-.2.31-.4.87-.6 3.45-1.5 5.75-2.49 6.9-2.97 3.29-1.37 3.97-1.61 4.42-1.62.1 0 .32.02.46.13.12.09.15.21.17.3-.01.06.01.24 0 .37z"/>
-                        </svg>
-                      )}
-                    </a>
-                  ))}
-                </div>
+            <div className="flex min-h-full flex-col">
+              {/* Header with close button */}
+              <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+                <a href="https://hc-dragons.com" className="flex items-center gap-2">
+                  <Image
+                    src="/logo_dragons.png"
+                    alt="Шанхай Дрэгонс"
+                    width={48}
+                    height={48}
+                    className="h-10 w-10 object-contain"
+                  />
+                  <Image
+                    src="/dragons_name.svg"
+                    alt="SHANGHAI DRAGONS"
+                    width={100}
+                    height={28}
+                    className="h-7 w-auto"
+                  />
+                </a>
                 <button
                   type="button"
-                  onClick={() => setLang(lang === "ru" ? "en" : "ru")}
-                  className="flex h-11 items-center gap-2 rounded-xl border border-[var(--md-border)] px-4 text-sm font-medium text-[var(--md-text-secondary)]"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex h-9 w-9 items-center justify-center text-white/70 transition-colors hover:text-white"
+                  aria-label="Закрыть меню"
                 >
-                  {lang === "ru" ? "Русский" : "English"}
-                  <ChevronDown />
+                  <CloseIcon className="h-6 w-6" />
                 </button>
               </div>
+
+              {/* Search */}
+              <div className="border-b border-white/10 px-4 py-4">
+                <div className="flex items-center gap-3 rounded border border-white/20 bg-white/5 px-4 py-3">
+                  <span className="text-sm text-white/70">Поиск по сайту</span>
+                  <SearchIcon className="ml-auto h-5 w-5 text-white/50" />
+                </div>
+              </div>
+
+              {/* Language Switcher */}
+              <div className="flex items-center justify-center gap-4 border-b border-white/10 py-4">
+                <button
+                  type="button"
+                  onClick={() => setLang("ru")}
+                  className={`text-base font-medium transition-colors ${
+                    lang === "ru" ? "text-white" : "text-white/40 hover:text-white/60"
+                  }`}
+                >
+                  Ру
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang("en")}
+                  className={`text-base font-medium transition-colors ${
+                    lang === "en" ? "text-white" : "text-white/40 hover:text-white/60"
+                  }`}
+                >
+                  En
+                </button>
+              </div>
+
+              {/* Navigation */}
+              <nav className="flex-1 px-4 py-6" aria-label="Мобильная навигация">
+                <ul className="flex flex-col items-center gap-5">
+                  {NAV_ITEMS.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="text-xl font-bold uppercase tracking-wide text-[#e85d04] transition-colors hover:text-[#f07b2f]"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              {/* Bottom CTAs */}
+              <div className="mt-auto border-t border-white/10 px-4 py-4">
+                <div className="flex flex-col gap-3">
+                  {/* Row 1: БИЛЕТЫ + VIP */}
+                  <div className="flex gap-3">
+                    <a
+                      href="#tickets"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex h-12 flex-1 items-center justify-center bg-[#e85d04] text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#f07b2f]"
+                    >
+                      БИЛЕТЫ
+                    </a>
+                    <a
+                      href="https://hc-dragons.com/vip"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex h-12 flex-1 items-center justify-center border border-white/30 bg-transparent text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10"
+                    >
+                      VIP
+                    </a>
+                  </div>
+                  
+                  {/* Row 2: Social + МАГАЗИН */}
+                  <div className="flex gap-3">
+                    <div className="flex gap-2">
+                      {SOCIAL_LINKS.map((social) => (
+                        <a
+                          key={social.icon}
+                          href={social.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex h-12 w-12 items-center justify-center border border-white/30 bg-transparent text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                          aria-label={social.label}
+                        >
+                          {social.icon === "vk" ? <VKIcon className="h-5 w-5" /> : <TelegramIcon className="h-5 w-5" />}
+                        </a>
+                      ))}
+                    </div>
+                    <a
+                      href="https://hc-dragons.com/shop"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex h-12 flex-1 items-center justify-center bg-[#f5a623] text-sm font-bold uppercase tracking-wide text-[#1a2744] transition-colors hover:bg-[#ffc107]"
+                    >
+                      МАГАЗИН
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </nav>
+          </div>
         </>
       )}
     </header>
