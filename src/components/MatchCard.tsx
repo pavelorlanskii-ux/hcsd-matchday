@@ -79,11 +79,11 @@ export function MatchCard(props: {
         </div>
 
         {/* Teams Block */}
-        <div className="rounded-xl bg-[var(--md-surface-2)]/80 p-4">
+        <div className="bg-[var(--md-surface-2)]/80 p-4">
           <div className="flex items-center justify-between gap-3">
             {/* Home Team */}
             <div className="flex min-w-0 flex-1 flex-col items-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--md-surface-3)]">
+              <div className="flex h-14 w-14 items-center justify-center bg-[var(--md-surface-3)]">
                 <Image
                   src={CLUB_LOGO}
                   alt={homeName}
@@ -99,13 +99,13 @@ export function MatchCard(props: {
             </div>
 
             {/* VS Divider */}
-            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-[var(--md-border)] bg-[var(--md-surface-1)]">
+            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
               <span className="text-xs font-bold text-[var(--md-text-muted)]">VS</span>
             </div>
 
             {/* Away Team */}
             <div className="flex min-w-0 flex-1 flex-col items-center text-center">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[var(--md-surface-3)] text-xs font-bold text-[var(--md-text-secondary)]">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-[var(--md-surface-3)] text-xs font-bold text-[var(--md-text-secondary)]">
                 {props.awayLogoText.slice(0, 4).toUpperCase()}
               </div>
               <div className="md-meta mt-2">Гости</div>
@@ -117,7 +117,7 @@ export function MatchCard(props: {
         </div>
 
         {/* Countdown */}
-        <div className="mt-4 rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
+        <div className="mt-4 border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
           <div className="md-meta mb-3 text-center">До матча осталось</div>
           {!isMatchStarted ? (
             <div className="md-countdown">
@@ -166,11 +166,11 @@ export function MatchCard(props: {
           </div>
 
           {/* Middle Column: Teams */}
-          <div className="rounded-xl bg-[var(--md-surface-2)]/80 p-5">
+          <div className="bg-[var(--md-surface-2)]/80 p-5">
             <div className="flex items-center justify-between gap-6">
               {/* Home Team */}
               <div className="flex min-w-0 flex-1 items-center gap-4">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[var(--md-surface-3)]">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center bg-[var(--md-surface-3)]">
                   <Image
                     src={CLUB_LOGO}
                     alt={homeName}
@@ -188,7 +188,7 @@ export function MatchCard(props: {
               </div>
 
               {/* VS Divider */}
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-[var(--md-border)] bg-[var(--md-surface-1)]">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
                 <span className="text-sm font-bold text-[var(--md-text-muted)]">VS</span>
               </div>
 
@@ -200,7 +200,7 @@ export function MatchCard(props: {
                     {awayName}
                   </div>
                 </div>
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[var(--md-surface-3)] text-sm font-bold text-[var(--md-text-secondary)]">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center bg-[var(--md-surface-3)] text-sm font-bold text-[var(--md-text-secondary)]">
                   {props.awayLogoText.slice(0, 4).toUpperCase()}
                 </div>
               </div>
@@ -210,7 +210,7 @@ export function MatchCard(props: {
           {/* Right Column: Countdown + CTAs */}
           <div className="pl-4">
             {/* Countdown */}
-            <div className="rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
+            <div className="border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
               <div className="md-meta mb-2 text-center">До матча</div>
               {!isMatchStarted ? (
                 <div className="md-countdown">
