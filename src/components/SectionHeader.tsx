@@ -29,7 +29,7 @@ export function SectionHeader({ title, subtitle, showDecor = true }: SectionHead
           {title}
         </h2>
         {subtitle && (
-          <p className="md-subtitle mt-2 max-w-2xl text-pretty md:mt-3">
+          <p className="md-subtitle mt-2.5 max-w-2xl text-pretty md:mt-4">
             {subtitle}
           </p>
         )}

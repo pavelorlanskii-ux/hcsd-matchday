@@ -29,7 +29,7 @@ export function HighlightBanner({ highlight }: HighlightBannerProps) {
         />
       </div>
 
-      <div className="relative z-10 p-5 sm:p-6 md:p-8">
+      <div className="relative z-10 p-6 sm:p-7 md:p-10">
         <div className="flex flex-col md:flex-row md:items-start md:gap-8">
           {/* Mobile header row: badge (left) + icon (right) on one line */}
           <div className="flex items-center justify-between md:hidden">
@@ -65,13 +65,13 @@ export function HighlightBanner({ highlight }: HighlightBannerProps) {
             </div>
 
             {/* Title */}
-            <h2 className="md-headline-section mt-4 text-balance text-[var(--md-text-primary)]">
+            <h2 className="md-headline-section mt-5 text-balance text-[var(--md-text-primary)]">
               {highlight.title}
             </h2>
 
             {/* Description */}
             {highlight.description && (
-              <p className="md-subtitle mt-4 max-w-2xl text-pretty">
+              <p className="md-subtitle mt-5 max-w-2xl text-pretty">
                 {highlight.description}
               </p>
             )}

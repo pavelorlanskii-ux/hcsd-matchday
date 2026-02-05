@@ -26,8 +26,8 @@ function Chip({ active, onClick, children }: ChipProps) {
 function LocationIcon() {
   return (
     <svg 
-      width="14" 
-      height="14" 
+      width="18" 
+      height="18" 
       viewBox="0 0 24 24" 
       fill="none" 
       stroke="currentColor" 
@@ -35,7 +35,7 @@ function LocationIcon() {
       strokeLinecap="round" 
       strokeLinejoin="round" 
       aria-hidden="true"
-      className="shrink-0"
+      className="h-[1.125rem] w-[1.125rem] shrink-0"
     >
       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
       <circle cx="12" cy="10" r="3"/>
@@ -68,10 +68,10 @@ export function ActivityCardGrid({
   return (
     <div>
       {/* Filters with horizontal scroll on mobile */}
-      <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
+      <div className="flex flex-col gap-5 md:flex-row md:items-start md:gap-10">
         {/* Interests filter */}
         <div className="flex-1">
-          <div className="md-label mb-2">Интересы</div>
+          <div className="md-label mb-2.5">Интересы</div>
           <div className="overflow-x-auto pb-2 md-scrollbar-hide">
             <div className="flex min-w-max gap-2">
               <Chip active={tag === "Все"} onClick={() => setTag("Все")}>
@@ -88,7 +88,7 @@ export function ActivityCardGrid({
 
         {/* Badges filter */}
         <div className="flex-1">
-          <div className="md-label mb-2">Время</div>
+          <div className="md-label mb-2.5">Время</div>
           <div className="overflow-x-auto pb-2 md-scrollbar-hide">
             <div className="flex min-w-max gap-2">
               <Chip active={badge === "Все"} onClick={() => setBadge("Все")}>
@@ -105,14 +105,14 @@ export function ActivityCardGrid({
       </div>
 
       {/* Results count */}
-      <div className="md-body-sm mt-4 text-[var(--md-text-muted)]">
+      <div className="md-body-sm mt-5 text-[var(--md-text-muted)]">
         {filtered.length > 0 ? (
           <span>Найдено: <span className="text-[var(--md-text-secondary)]">{filtered.length}</span></span>
         ) : null}
       </div>
 
       {/* Cards grid - Mobile: 1 col, Tablet: 2 cols, Desktop: 3-4 cols */}
-      <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((a: Activity) => (
           <article
             key={a.id}
@@ -155,10 +155,10 @@ export function ActivityCardGrid({
               )}
             </div>
             
-            {/* Content */}
-            <div className="flex flex-1 flex-col p-4">
+            {/* Content: flex column, footer pushed to bottom for equal card height */}
+            <div className="flex min-h-0 flex-1 flex-col p-5">
               {/* Badges */}
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {a.badges.map((b: ActivityBadge) => (
                   <span key={b} className="md-badge md-badge-muted">
                     {b}
@@ -166,26 +166,26 @@ export function ActivityCardGrid({
                 ))}
               </div>
 
-              {/* Title */}
-              <h3 className="md-title-card mt-3 line-clamp-2 text-[var(--md-text-primary)]">
+              {/* Title - full text, no clamp */}
+              <h3 className="md-title-card mt-4 text-[var(--md-text-primary)]">
                 {a.title}
               </h3>
               
-              {/* Description */}
-              <p className="md-body-sm mt-2 flex-1 line-clamp-3">
+              {/* Description - full text, grows to fill space */}
+              <p className="md-body-sm mt-2.5 min-h-0 flex-1">
                 {a.description}
               </p>
 
-              {/* Footer: Location + Tags */}
-              <div className="mt-4 border-t border-[var(--md-border-subtle)] pt-3">
-                {/* Location */}
-                <div className="flex items-center gap-1.5 text-[0.75rem] text-[var(--md-text-muted)]">
+              {/* Footer: Location + Tags - pinned to bottom */}
+              <div className="mt-auto border-t border-[var(--md-border-subtle)] pt-4">
+                {/* Location - full text, no truncate */}
+                <div className="flex items-start gap-2 md-body-sm text-[var(--md-text-muted)]">
                   <LocationIcon />
-                  <span className="truncate">{a.location}</span>
+                  <span>{a.location}</span>
                 </div>
 
                 {/* Tags */}
-                <div className="mt-2 flex flex-wrap gap-1.5">
+                <div className="mt-2.5 flex flex-wrap gap-2">
                   {a.tags.map((t: ActivityTag) => (
                     <span key={t} className="md-badge md-badge-turq">
                       {t}
@@ -200,8 +200,8 @@ export function ActivityCardGrid({
 
       {/* Empty state */}
       {filtered.length === 0 && (
-        <div className="mt-8 rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-1)] p-8 text-center">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--md-surface-2)]">
+        <div className="mt-10 rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-1)] p-10 text-center">
+          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--md-surface-2)]">
             <svg 
               width="24" 
               height="24" 
@@ -222,7 +222,7 @@ export function ActivityCardGrid({
           <button
             type="button"
             onClick={() => { setTag("Все"); setBadge("Все"); }}
-            className="mt-4 font-[var(--font-horta)] text-[0.8125rem] uppercase tracking-[0.1em] text-[var(--md-dragons-orange)] transition-colors hover:text-[var(--md-dragons-orange-light)]"
+            className="mt-5 md-label text-[var(--md-dragons-orange)] transition-colors hover:text-[var(--md-dragons-orange-light)]"
           >
             Сбросить фильтры
           </button>

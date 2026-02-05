@@ -16,14 +16,14 @@ export function CTASection() {
         />
       </div>
 
-      <div className="relative z-10 p-5 sm:p-6 md:p-8">
-        <div className="flex flex-col items-center gap-5 text-center md:flex-row md:justify-between md:text-left">
+      <div className="relative z-10 p-6 sm:p-7 md:p-10">
+        <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
           {/* Text */}
           <div>
             <h2 className="md-headline-section text-balance text-[var(--md-text-primary)]">
-              Увидимся на арене
+              Увидимся на СКА Арене
             </h2>
-            <p className="md-subtitle mt-2">
+            <p className="md-subtitle mt-2.5">
               Приходите заранее, чтобы всё успеть
             </p>
           </div>

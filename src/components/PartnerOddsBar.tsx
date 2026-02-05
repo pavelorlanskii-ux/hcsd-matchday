@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-const BETBOOM_LOGO = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-Uo5FobMRzYlKViTzKaOGGScifD6wZn.svg";
+const BETBOOM_LOGO = "/partners/betboom-logo.png";
 
 type Partner = {
   name: string;
@@ -39,10 +39,10 @@ function OddPill({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="group flex flex-1 flex-col items-center justify-center rounded-lg border border-[var(--md-border)] bg-[var(--md-surface-2)]/80 px-2 py-2 transition-all hover:border-[var(--md-partner-accent)]/40 hover:bg-[var(--md-surface-3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--md-partner-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--md-surface-1)] active:scale-[0.97] sm:px-4 sm:py-3"
+      className="group flex flex-1 flex-col items-center justify-center rounded-lg border border-[var(--md-border)] bg-[var(--md-surface-2)]/80 px-3 py-3 transition-all hover:border-[var(--md-partner-accent)]/40 hover:bg-[var(--md-surface-3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--md-partner-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--md-surface-1)] active:scale-[0.97] sm:px-5 sm:py-4"
     >
-      <span className="font-[var(--font-horta)] text-[10px] uppercase tracking-[0.1em] text-[var(--md-text-muted)]">{label}</span>
-      <span className="mt-0.5 font-[var(--font-horta)] text-[1.125rem] font-bold tabular-nums text-[var(--md-partner-accent)] transition-colors group-hover:text-[var(--md-partner-accent-light)] sm:mt-1 sm:text-[1.25rem]">
+      <span className="md-label text-[var(--md-text-muted)]">{label}</span>
+      <span className="mt-1 font-[var(--font-horta)] text-[var(--md-font-size-xl)] font-bold tabular-nums text-[var(--md-partner-accent)] transition-colors group-hover:text-[var(--md-partner-accent-light)] sm:mt-1.5 sm:text-[var(--md-font-size-2xl)]">
         {formatOdd(value)}
       </span>
     </a>
@@ -127,29 +127,29 @@ export function PartnerOddsBar({
           href={ctaHref}
           target="_blank"
           rel="noreferrer"
-          className="mt-1 flex h-11 w-full items-center justify-center bg-[var(--md-partner-accent)] font-[var(--font-horta)] text-[0.75rem] uppercase tracking-[0.1em] text-white transition-colors hover:bg-[var(--md-partner-accent-light)] sm:h-12 sm:text-[0.8125rem]"
+          className="md-btn md-btn-partner mt-2 w-full sm:min-h-[3.5rem]"
         >
           {ctaLabel}
         </a>
 
         {/* Disclaimer */}
-        <div className="text-[0.625rem] leading-relaxed text-[var(--md-text-disabled)] sm:text-[0.6875rem]">
+        <div className="md-body-sm text-[var(--md-text-disabled)]">
           {disclaimer}
         </div>
       </div>
 
       {/* Desktop Layout */}
-      <div className="hidden p-5 lg:block lg:p-6">
-        <div className="flex items-center justify-between gap-6">
+      <div className="hidden p-6 lg:block lg:p-8">
+        <div className="flex items-center justify-between gap-8">
           {/* Partner Info */}
-          <div className="flex items-center gap-4">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[var(--md-partner-accent)]/10">
+          <div className="flex items-center gap-5">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[var(--md-partner-accent)]/10">
               <Image
                 src={BETBOOM_LOGO}
                 alt="BetBoom"
                 width={44}
                 height={44}
-                className="h-11 w-11 object-contain"
+                className="h-12 w-12 object-contain"
               />
             </div>
             <div>
@@ -158,7 +158,7 @@ export function PartnerOddsBar({
                 href={partner.url}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-1 block font-[var(--font-horta)] text-[1.375rem] tracking-[0.03em] text-[var(--md-text-primary)] transition-colors hover:text-[var(--md-partner-accent)]"
+                className="mt-1.5 block font-[var(--font-horta)] text-[var(--md-font-size-2xl)] tracking-[0.03em] text-[var(--md-text-primary)] transition-colors hover:text-[var(--md-partner-accent)]"
               >
                 {partner.logoText || partner.name}
               </a>
@@ -185,7 +185,7 @@ export function PartnerOddsBar({
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-4 border-t border-[var(--md-border-subtle)] pt-3 text-[0.75rem] leading-relaxed text-[var(--md-text-disabled)]">
+        <div className="mt-5 border-t border-[var(--md-border-subtle)] pt-4 md-body-sm text-[var(--md-text-disabled)]">
           {disclaimer}
         </div>
       </div>

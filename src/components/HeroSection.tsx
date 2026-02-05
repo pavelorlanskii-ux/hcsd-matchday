@@ -9,14 +9,14 @@ type HeroSectionProps = {
 
 export function HeroSection({ title, subtitle, partnerName, children }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden pt-8 pb-6 md:pt-12 md:pb-8 lg:pt-16 lg:pb-10" id="tickets">
+    <section className="relative overflow-hidden pt-10 pb-8 md:pt-14 md:pb-10 lg:pt-20 lg:pb-12" id="tickets">
       {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-[1200px] px-5 sm:px-6 lg:px-8">
         <div className="flex flex-col">
           {/* Text Block */}
           <div className="max-w-2xl lg:max-w-3xl">
             {/* Partner Badge - prominent but not overwhelming */}
-            <div className="mb-4 md:mb-5">
+            <div className="mb-5 md:mb-6">
               <span className="md-badge md-badge-partner">
                 <svg 
                   className="h-3 w-3" 
@@ -31,18 +31,18 @@ export function HeroSection({ title, subtitle, partnerName, children }: HeroSect
             </div>
 
             {/* Headline with proper hierarchy */}
-            <h1 className="md-headline-hero text-balance text-[var(--md-text-primary)]">
+            <h1 className="md-headline-hero text-[var(--md-text-primary)] lg:whitespace-nowrap">
               {title}
             </h1>
             
             {/* Subtitle with better spacing */}
-            <p className="md-subtitle mt-4 max-w-xl text-pretty md:mt-5 lg:text-base">
+            <p className="md-subtitle mt-5 max-w-xl text-pretty md:mt-6">
               {subtitle}
             </p>
           </div>
 
           {/* Match Card - central element */}
-          <div className="mt-8 md:mt-10 lg:mt-12">
+          <div className="mt-10 md:mt-12 lg:mt-14">
             {children}
           </div>
         </div>

@@ -77,7 +77,7 @@ export default function Page() {
       <main id="main-content" className="relative z-10 flex-1">
         {/* Hero Section */}
         <HeroSection
-          title="Вечер хоккея и шоу на арене"
+          title="Вечер хоккея и шоу на СКА Арене"
           subtitle="Приезжайте заранее, чтобы успеть на активности, сделать фото и поймать правильное матчевое настроение."
           partnerName={matchday.partner.name}
         >
@@ -94,7 +94,7 @@ export default function Page() {
         </HeroSection>
 
         {/* Main sections container with consistent spacing */}
-        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-6 px-4 sm:px-6 md:gap-8 lg:px-8">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-8 px-5 sm:px-6 md:gap-10 lg:px-8">
           {/* Partner Odds Section */}
           <section id="odds">
             <PartnerOddsBar
@@ -114,7 +114,7 @@ export default function Page() {
               title="Программа вечера"
               subtitle="Фильтруйте по интересам и ориентирам. Все активности работают в указанное время."
             />
-            <div className="mt-5 md:mt-6">
+            <div className="mt-6 md:mt-8">
               <ActivityCardGrid
                 activities={matchday.activities}
                 tags={matchday.filters.tags}
@@ -129,13 +129,13 @@ export default function Page() {
               title="Специальные предложения"
               subtitle="Партнерские предложения и бонусы для болельщиков."
             />
-            <div className="mt-5 md:mt-6">
+            <div className="mt-6 md:mt-8">
               <OffersGrid offers={matchday.offers} partnerName={matchday.partner.name} />
             </div>
           </section>
 
           {/* CTA Section */}
-          <section id="tickets-cta" className="pb-6 md:pb-8">
+          <section id="tickets-cta" className="pb-8 md:pb-10">
             <CTASection />
           </section>
         </div>

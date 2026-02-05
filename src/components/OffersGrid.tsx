@@ -37,7 +37,7 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
   }
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 md:gap-5">
+    <div className="grid gap-5 md:grid-cols-2 md:gap-6">
       {offers.map((o) => {
         // Check if this offer is from the partner
         const isPartnerOffer = o.badge?.toLowerCase().includes(partnerName.toLowerCase()) || 
@@ -50,7 +50,7 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
             key={o.id} 
             className={`flex flex-col overflow-hidden ${isPartnerOffer ? "md-card-featured" : "md-card"}`}
           >
-            <div className="flex flex-1 flex-col p-5 sm:p-6">
+            <div className="flex flex-1 flex-col p-6 sm:p-7">
               {/* Badge */}
               {o.badge && (
                 <div className={`inline-flex w-fit ${isPartnerOffer ? "md-badge md-badge-partner" : "md-badge md-badge-yellow"}`}>
@@ -60,12 +60,12 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
               )}
               
               {/* Title */}
-              <h3 className="md-title-card mt-4 text-[var(--md-text-primary)]">
+              <h3 className="md-title-card mt-5 text-[var(--md-text-primary)]">
                 {o.title}
               </h3>
               
               {/* Description */}
-              <p className="md-body mt-3 flex-1">
+              <p className="md-body mt-4 flex-1">
                 {o.description}
               </p>
               
@@ -73,7 +73,7 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
               {o.link && (
                 <a
                   href={o.link.href}
-                  className={`group mt-5 inline-flex w-fit items-center gap-2 ${isPartnerOffer ? "md-btn md-btn-partner" : "md-btn md-btn-accent"}`}
+                  className={`group mt-6 inline-flex w-fit items-center gap-2 ${isPartnerOffer ? "md-btn md-btn-partner" : "md-btn md-btn-accent"}`}
                 >
                   {o.link.label}
                   <ArrowIcon />

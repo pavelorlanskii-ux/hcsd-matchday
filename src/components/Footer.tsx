@@ -166,7 +166,7 @@ export function Footer() {
       </div>
 
       {/* ===== MOBILE FOOTER LAYOUT (< 640px) ===== */}
-      <div className="relative z-10 px-5 py-8 sm:hidden">
+      <div className="relative z-10 px-6 py-10 sm:hidden">
         {/* Top Row: Logo + Social Grid 3x2 */}
         <div className="flex items-center justify-between gap-4">
           {/* Left: Large Circular Logo */}
@@ -198,17 +198,17 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-6 text-[0.875rem] leading-relaxed text-white/70">
+        <div className="mt-8 md-footer-link text-white/70">
           &copy; {currentYear} Хоккейный клуб «Шанхай Дрэгонс»
         </div>
 
         {/* Divider Line */}
-        <div className="mt-4 h-px w-full bg-white/15" aria-hidden="true" />
+        <div className="mt-5 h-px w-full bg-white/15" aria-hidden="true" />
       </div>
 
       {/* ===== TABLET/DESKTOP FOOTER LAYOUT (>= 640px) ===== */}
-      <div className="relative z-10 mx-auto hidden max-w-[1400px] px-6 py-12 sm:block lg:px-12 lg:py-16">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
+      <div className="relative z-10 mx-auto hidden max-w-[1400px] px-8 py-14 sm:block lg:px-14 lg:py-20">
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
           {/* Left: Logo */}
           <div className="flex-shrink-0">
             <Image
