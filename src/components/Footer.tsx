@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 const CLUB_LOGO = "/logo_dragons.png";
-const DRAGON_ORNAMENT = "/ornaments/dragons.png";
+const DRAGON_ORNAMENT = "/ornaments/dragon-footer.png";
 
 const NAV_COLUMNS = [
   {
@@ -125,13 +125,17 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-[#1a2744]">
-      {/* Background Dragon Ornament */}
-      <div className="pointer-events-none absolute -left-32 top-0 h-full w-[600px] opacity-[0.15]" aria-hidden="true">
+      {/* Background Dragon Watermark */}
+      <div 
+        className="pointer-events-none absolute -left-[5%] top-1/2 h-[120%] w-[50%] -translate-y-1/2 opacity-[0.12] md:opacity-[0.15] lg:-left-[2%] lg:w-[45%]" 
+        aria-hidden="true"
+      >
         <Image
           src={DRAGON_ORNAMENT}
           alt=""
           fill
-          className="object-contain object-left"
+          className="object-contain object-center"
+          priority
         />
       </div>
 
@@ -211,11 +215,13 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="relative border-t border-white/10">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-4 px-6 py-5 sm:flex-row lg:px-12">
+        <div className="mx-auto flex max-w-[1400px] items-center px-6 py-5 lg:px-12">
           {/* Copyright */}
           <div className="text-[13px] text-white/60 lg:text-sm">
             &copy; {currentYear} Хоккейный клуб «Шанхай Дрэгонс»
           </div>
+        </div>
+      </div>
 
           {/* Credits */}
           <div className="flex items-center gap-2 text-[13px] text-white/60 lg:text-sm">
