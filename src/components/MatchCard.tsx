@@ -49,10 +49,13 @@ export function MatchCard(props: {
   const [now, setNow] = useState(target - 1000 * 60 * 60 * 24); // Initialize with 1 day before target to avoid hydration mismatch
 
   useEffect(() => {
-    // Set actual time after mount
-    setNow(Date.now());
-    const t = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(t);
+    const update = () => setNow(Date.now());
+    const id = setTimeout(update, 0);
+    const t = setInterval(update, 1000);
+    return () => {
+      clearTimeout(id);
+      clearInterval(t);
+    };
   }, []);
 
   const diff = target - now;

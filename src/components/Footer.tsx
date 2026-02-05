@@ -159,6 +159,7 @@ export function Footer() {
           src={DRAGON_ORNAMENT}
           alt=""
           fill
+          sizes="(max-width: 768px) 100vw, 65vw"
           className="object-contain object-left"
           priority
         />

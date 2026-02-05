@@ -29,6 +29,7 @@ export default function Page() {
           src={PATTERN_BG}
           alt=""
           fill
+          sizes="100vw"
           className="object-cover"
           priority
           aria-hidden="true"
