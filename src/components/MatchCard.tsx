@@ -149,9 +149,9 @@ export function MatchCard(props: {
 
       {/* Desktop Layout */}
       <div className="hidden p-5 lg:block lg:p-6">
-        <div className="grid grid-cols-[1fr_1.6fr_1fr] items-center gap-6">
+        <div className="grid grid-cols-[1fr_1.4fr_280px] items-center gap-5">
           {/* Left Column: Meta Info */}
-          <div className="pr-4">
+          <div className="pr-3">
             <div className="text-xl font-bold tracking-tight text-[var(--md-text-primary)]">
               {props.leftMetaLines[0]}
             </div>
@@ -208,10 +208,10 @@ export function MatchCard(props: {
           </div>
 
           {/* Right Column: Countdown + CTAs */}
-          <div className="pl-4">
+          <div className="w-full max-w-[280px] pl-3">
             {/* Countdown */}
-            <div className="border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
-              <div className="md-meta mb-2 text-center">До матча</div>
+            <div className="border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-3">
+              <div className="md-meta mb-1.5 text-center text-[10px]">До матча</div>
               {!isMatchStarted ? (
                 <div className="md-countdown">
                   <CountdownUnit value={countdown.d} label="дн" />
@@ -230,11 +230,11 @@ export function MatchCard(props: {
             </div>
 
             {/* Buttons */}
-            <div className="mt-3 flex flex-col gap-2">
-              <a href={props.buyHref} className="md-btn md-btn-primary md-btn-lg w-full">
+            <div className="mt-2.5 flex flex-col gap-1.5">
+              <a href={props.buyHref} className="md-btn md-btn-primary w-full text-[13px]">
                 Купить билеты
               </a>
-              <a href={props.homeHref} className="md-btn md-btn-secondary w-full">
+              <a href={props.homeHref} className="md-btn md-btn-secondary w-full text-[12px]">
                 На главную
               </a>
             </div>

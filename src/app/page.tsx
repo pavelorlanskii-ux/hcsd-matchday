@@ -93,9 +93,9 @@ export default function Page() {
         </HeroSection>
 
         {/* Main sections container with consistent spacing */}
-        <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-6 px-4 sm:px-6 md:gap-8 lg:px-8">
           {/* Partner Odds Section */}
-          <section id="odds" className="py-6 md:py-8">
+          <section id="odds">
             <PartnerOddsBar
               partner={matchday.partner}
               odds={matchday.odds}
@@ -103,17 +103,17 @@ export default function Page() {
           </section>
 
           {/* Highlight Section */}
-          <section id="highlight" className="py-6 md:py-8">
+          <section id="highlight">
             <HighlightBanner highlight={matchday.highlight} />
           </section>
 
           {/* Program Section */}
-          <section id="program" className="pb-4 pt-8 md:pb-6 md:pt-10">
+          <section id="program">
             <SectionHeader
               title="Программа вечера"
               subtitle="Фильтруйте по интересам и ориентирам. Все активности работают в указанное время."
             />
-            <div className="mt-6 md:mt-8">
+            <div className="mt-5 md:mt-6">
               <ActivityCardGrid
                 activities={matchday.activities}
                 tags={matchday.filters.tags}
@@ -123,18 +123,18 @@ export default function Page() {
           </section>
 
           {/* Offers Section */}
-          <section id="offers" className="pb-8 pt-4 md:pb-10 md:pt-6">
+          <section id="offers">
             <SectionHeader
               title="Специальные предложения"
               subtitle="Партнерские предложения и бонусы для болельщиков."
             />
-            <div className="mt-6 md:mt-8">
+            <div className="mt-5 md:mt-6">
               <OffersGrid offers={matchday.offers} partnerName={matchday.partner.name} />
             </div>
           </section>
 
           {/* CTA Section */}
-          <section id="tickets-cta" className="pb-10 pt-4 md:pb-12 md:pt-6">
+          <section id="tickets-cta" className="pb-6 md:pb-8">
             <CTASection />
           </section>
         </div>
