@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 const CLUB_LOGO = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_shanghai_dragons-rpqZlKvYrjv48TTGb7Qc3pkrbDbzZJ.png";
+const OPPONENT_LOGO = "/opponents/lokomotiv.png";
 
 function parseCountdown(ms: number) {
   if (ms <= 0) return { d: "00", h: "00", m: "00", s: "00" };
@@ -78,38 +79,44 @@ export function MatchCard(props: {
           </div>
         </div>
 
-        {/* Teams Block */}
-        <div className="bg-[var(--md-surface-2)]/80 p-4">
-          <div className="flex items-center justify-between gap-3">
+        {/* Teams Block - Vertical layout: logo above name */}
+        <div className="bg-[var(--md-surface-2)]/80 px-4 py-5">
+          <div className="flex items-start justify-between gap-2">
             {/* Home Team */}
             <div className="flex min-w-0 flex-1 flex-col items-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center bg-[var(--md-surface-3)]">
+              <div className="flex h-16 w-16 items-center justify-center">
                 <Image
                   src={CLUB_LOGO}
                   alt={homeName}
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 object-contain"
+                  width={64}
+                  height={64}
+                  className="h-16 w-16 object-contain"
                 />
               </div>
-              <div className="md-meta mt-2">Хозяева</div>
-              <div className="mt-1 line-clamp-2 text-sm font-semibold leading-tight text-[var(--md-text-primary)]">
+              <div className="md-meta mt-2 text-[10px]">Хозяева</div>
+              <div className="mt-1 line-clamp-2 min-h-[2.5rem] text-sm font-bold leading-tight text-[var(--md-text-primary)]">
                 {homeName}
               </div>
             </div>
 
             {/* VS Divider */}
-            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
+            <div className="mt-4 flex h-10 w-10 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
               <span className="text-xs font-bold text-[var(--md-text-muted)]">VS</span>
             </div>
 
             {/* Away Team */}
             <div className="flex min-w-0 flex-1 flex-col items-center text-center">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-[var(--md-surface-3)] text-xs font-bold text-[var(--md-text-secondary)]">
-                {props.awayLogoText.slice(0, 4).toUpperCase()}
+              <div className="flex h-16 w-16 items-center justify-center">
+                <Image
+                  src={OPPONENT_LOGO}
+                  alt={awayName}
+                  width={64}
+                  height={64}
+                  className="h-16 w-16 object-contain"
+                />
               </div>
-              <div className="md-meta mt-2">Гости</div>
-              <div className="mt-1 w-full truncate text-sm font-semibold leading-tight text-[var(--md-text-primary)]">
+              <div className="md-meta mt-2 text-[10px]">Гости</div>
+              <div className="mt-1 line-clamp-2 min-h-[2.5rem] text-sm font-bold leading-tight text-[var(--md-text-primary)]">
                 {awayName}
               </div>
             </div>
@@ -150,65 +157,67 @@ export function MatchCard(props: {
       {/* Desktop Layout */}
       <div className="hidden p-5 lg:block lg:p-6">
         <div className="flex items-center gap-4">
-          {/* Left Column: Meta Info */}
-          <div className="w-[180px] flex-shrink-0">
-            <div className="text-xl font-bold tracking-tight text-[var(--md-text-primary)]">
+          {/* Left Column: Meta Info - compact */}
+          <div className="w-[160px] flex-shrink-0">
+            <div className="text-lg font-bold tracking-tight text-[var(--md-text-primary)]">
               {props.leftMetaLines[0]}
             </div>
-            <div className="mt-2 space-y-0.5">
-              <div className="text-sm font-medium text-[var(--md-text-secondary)]">
+            <div className="mt-1.5 space-y-0.5">
+              <div className="text-[13px] font-medium leading-snug text-[var(--md-text-secondary)]">
                 {props.leftMetaLines[1]}
               </div>
-              <div className="text-sm text-[var(--md-text-muted)]">
+              <div className="text-[13px] leading-snug text-[var(--md-text-muted)]">
                 {props.leftMetaLines[2]}
               </div>
             </div>
           </div>
 
-          {/* Middle Column: Teams - flex-1 to fill all available space */}
-          <div className="min-w-0 flex-1 bg-[var(--md-surface-2)]/80 px-5 py-4">
-            <div className="flex items-center gap-5">
-              {/* Home Team */}
-              <div className="flex min-w-0 flex-1 items-center gap-4">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center bg-[var(--md-surface-3)]">
+          {/* Middle Column: Teams - vertical layout with logos above names */}
+          <div className="min-w-0 flex-1 bg-[var(--md-surface-2)]/80 px-6 py-5">
+            <div className="flex items-start justify-center gap-8">
+              {/* Home Team - vertical: logo -> label -> name */}
+              <div className="flex w-[140px] flex-col items-center text-center">
+                <div className="flex h-20 w-20 items-center justify-center">
                   <Image
                     src={CLUB_LOGO}
                     alt={homeName}
-                    width={56}
-                    height={56}
-                    className="h-14 w-14 object-contain"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
                   />
                 </div>
-                <div className="min-w-0 flex-1">
-                  <div className="md-meta text-[11px]">Хозяева</div>
-                  <div className="mt-1 line-clamp-2 text-lg font-bold leading-snug text-[var(--md-text-primary)]">
-                    {homeName}
-                  </div>
+                <div className="md-meta mt-2 text-[10px]">Хозяева</div>
+                <div className="mt-1 line-clamp-2 min-h-[2.75rem] text-base font-bold leading-snug text-[var(--md-text-primary)]">
+                  {homeName}
                 </div>
               </div>
 
               {/* VS Divider */}
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
-                <span className="text-xs font-bold text-[var(--md-text-muted)]">VS</span>
+              <div className="mt-6 flex h-12 w-12 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
+                <span className="text-sm font-bold text-[var(--md-text-muted)]">VS</span>
               </div>
 
-              {/* Away Team */}
-              <div className="flex min-w-0 flex-1 items-center justify-end gap-4">
-                <div className="min-w-0 flex-1 text-right">
-                  <div className="md-meta text-[11px]">Гости</div>
-                  <div className="mt-1 line-clamp-2 text-lg font-bold leading-snug text-[var(--md-text-primary)]">
-                    {awayName}
-                  </div>
+              {/* Away Team - vertical: logo -> label -> name */}
+              <div className="flex w-[140px] flex-col items-center text-center">
+                <div className="flex h-20 w-20 items-center justify-center">
+                  <Image
+                    src={OPPONENT_LOGO}
+                    alt={awayName}
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
                 </div>
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center bg-[var(--md-surface-3)] text-sm font-bold text-[var(--md-text-secondary)]">
-                  {props.awayLogoText.slice(0, 4).toUpperCase()}
+                <div className="md-meta mt-2 text-[10px]">Гости</div>
+                <div className="mt-1 line-clamp-2 min-h-[2.75rem] text-base font-bold leading-snug text-[var(--md-text-primary)]">
+                  {awayName}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Column: Countdown + CTAs */}
-          <div className="w-[260px] flex-shrink-0">
+          <div className="w-[240px] flex-shrink-0">
             {/* Countdown */}
             <div className="border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-3">
               <div className="md-meta mb-1.5 text-center text-[10px]">До матча</div>
