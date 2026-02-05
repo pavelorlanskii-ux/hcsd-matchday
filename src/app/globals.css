@@ -86,6 +86,7 @@
   --color-foreground: var(--md-text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-horta: var(--font-horta);
 }
 
 body {
@@ -174,9 +175,10 @@ body {
   height: var(--md-button-height);
   padding-inline: 1.5rem;
   border-radius: 0;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: all 0.15s ease;
   cursor: pointer;
@@ -249,8 +251,9 @@ body {
   gap: 0.375rem;
   padding: 0.375rem 0.75rem;
   border-radius: 0;
-  font-size: 0.6875rem;
-  font-weight: 700;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   white-space: nowrap;
@@ -296,8 +299,9 @@ body {
   border-radius: 0;
   border: 1px solid var(--md-border);
   background: rgba(255, 255, 255, 0.04);
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--md-text-secondary);
   transition: all 0.15s ease;
   cursor: pointer;
@@ -385,26 +389,29 @@ html {
 
 /* ===== Text Utilities ===== */
 .md-headline-hero {
-  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .md-headline-section {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.03em;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: clamp(1.375rem, 2.75vw, 2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .md-title-card {
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: 0.015em;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
 }
 
 .md-body {
@@ -420,9 +427,10 @@ html {
 }
 
 .md-meta {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--md-text-muted);
 }
@@ -430,10 +438,11 @@ html {
 /* ===== Kicker / Label ===== */
 .md-kicker,
 .md-label {
-  font-size: 0.6875rem;
-  font-weight: 600;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--md-text-muted);
 }
 
@@ -488,8 +497,9 @@ html {
 }
 
 .md-countdown-value {
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
   line-height: 1;
   font-variant-numeric: tabular-nums;
   color: var(--md-dragons-orange);
@@ -497,10 +507,11 @@ html {
 
 .md-countdown-label {
   margin-top: 0.125rem;
-  font-size: 0.5625rem;
-  font-weight: 600;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--md-text-muted);
 }
 
@@ -518,7 +529,7 @@ html {
     gap: 0.375rem;
   }
   .md-countdown-value {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
   .md-countdown-unit {
     width: 2.75rem;
@@ -530,13 +541,13 @@ html {
 
 @media (min-width: 1024px) {
   .md-countdown-value {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
   }
   .md-countdown-unit {
     width: 2.5rem;
   }
   .md-countdown-label {
-    font-size: 0.5rem;
+    font-size: 0.5625rem;
   }
   .md-countdown-separator {
     font-size: 0.875rem;
