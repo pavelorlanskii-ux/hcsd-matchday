@@ -91,13 +91,12 @@ export function PartnerOddsBar({
       <div className="flex flex-col gap-3 p-4 sm:gap-4 sm:p-5 lg:hidden">
         {/* Partner Info */}
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center sm:h-12 sm:w-12" style={{ background: 'rgba(255, 107, 0, 0.1)' }}>
+          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-sm sm:h-12 sm:w-12" style={{ background: 'rgba(255, 107, 0, 0.1)' }}>
             <Image
               src={BETBOOM_LOGO}
               alt="BetBoom"
-              width={36}
-              height={36}
-              className="h-8 w-8 object-contain sm:h-9 sm:w-9"
+              fill
+              className="object-contain"
             />
           </div>
           <div className="min-w-0 flex-1">
@@ -144,13 +143,12 @@ export function PartnerOddsBar({
         <div className="flex items-center justify-between gap-8">
           {/* Partner Info */}
           <div className="flex items-center gap-5">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center" style={{ background: 'rgba(255, 107, 0, 0.1)' }}>
+            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-sm" style={{ background: 'rgba(255, 107, 0, 0.1)' }}>
               <Image
                 src={BETBOOM_LOGO}
                 alt="BetBoom"
-                width={44}
-                height={44}
-                className="h-12 w-12 object-contain"
+                fill
+                className="object-contain"
               />
             </div>
             <div>
