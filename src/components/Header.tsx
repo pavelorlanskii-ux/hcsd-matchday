@@ -209,16 +209,6 @@ export function Header() {
             ))}
           </div>
 
-          {/* Mobile: Grid Button (shows same as left on desktop, hidden on mobile since left one opens menu) */}
-          <button
-            type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-9 w-9 items-center justify-center text-white/70 transition-colors hover:text-white xl:hidden"
-            aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
-            aria-expanded={mobileOpen}
-          >
-            <GridIcon className="h-5 w-5" />
-          </button>
         </div>
       </div>
 
