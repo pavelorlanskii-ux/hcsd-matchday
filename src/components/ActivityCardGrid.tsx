@@ -22,6 +22,26 @@ function Chip({ active, onClick, children }: ChipProps) {
   );
 }
 
+function LocationIcon() {
+  return (
+    <svg 
+      width="14" 
+      height="14" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </svg>
+  );
+}
+
 type ActivityCardGridProps = {
   activities?: Activity[];
   tags?: ActivityTag[];
@@ -47,10 +67,10 @@ export function ActivityCardGrid({
   return (
     <div>
       {/* Filters with horizontal scroll on mobile */}
-      <div className="flex flex-col gap-4 sm:gap-5">
+      <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
         {/* Interests filter */}
-        <div>
-          <div className="md-label mb-2.5 text-xs font-semibold text-[var(--md-text-muted)]">Интересы</div>
+        <div className="flex-1">
+          <div className="md-label mb-2">Интересы</div>
           <div className="overflow-x-auto pb-2 md-scrollbar-hide">
             <div className="flex min-w-max gap-2">
               <Chip active={tag === "Все"} onClick={() => setTag("Все")}>
@@ -66,8 +86,8 @@ export function ActivityCardGrid({
         </div>
 
         {/* Badges filter */}
-        <div>
-          <div className="md-label mb-2.5 text-xs font-semibold text-[var(--md-text-muted)]">Ориентиры</div>
+        <div className="flex-1">
+          <div className="md-label mb-2">Время</div>
           <div className="overflow-x-auto pb-2 md-scrollbar-hide">
             <div className="flex min-w-max gap-2">
               <Chip active={badge === "Все"} onClick={() => setBadge("Все")}>
@@ -83,18 +103,42 @@ export function ActivityCardGrid({
         </div>
       </div>
 
-      {/* Cards grid - Mobile: 1 col, Tablet: 2 cols, Desktop: 4 cols */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+      {/* Results count */}
+      <div className="mt-4 text-sm text-[var(--md-text-muted)]">
+        {filtered.length > 0 ? (
+          <span>Найдено: <span className="font-medium text-[var(--md-text-secondary)]">{filtered.length}</span></span>
+        ) : null}
+      </div>
+
+      {/* Cards grid - Mobile: 1 col, Tablet: 2 cols, Desktop: 3-4 cols */}
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filtered.map((a: Activity) => (
           <article
             key={a.id}
-            className="md-card group overflow-hidden transition-transform hover:-translate-y-0.5"
+            className="md-card group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-0.5"
           >
-            {/* Image placeholder */}
-            <div className="relative aspect-[16/10] bg-[var(--md-surface-2)]" />
+            {/* Image placeholder with gradient */}
+            <div className="relative aspect-[16/10] bg-gradient-to-br from-[var(--md-surface-2)] to-[var(--md-surface-3)]">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="h-12 w-12 rounded-full bg-[var(--md-surface-1)]/50 flex items-center justify-center">
+                  <svg 
+                    className="h-6 w-6 text-[var(--md-text-muted)]" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="1.5"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <path d="m21 15-5-5L5 21"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
             
             {/* Content */}
-            <div className="p-4 sm:p-5">
+            <div className="flex flex-1 flex-col p-4">
               {/* Badges */}
               <div className="flex flex-wrap gap-1.5">
                 {a.badges.map((b: ActivityBadge) => (
@@ -110,36 +154,26 @@ export function ActivityCardGrid({
               </h3>
               
               {/* Description */}
-              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-[var(--md-text-secondary)]">
+              <p className="mt-2 flex-1 line-clamp-3 text-sm leading-relaxed text-[var(--md-text-secondary)]">
                 {a.description}
               </p>
 
-              {/* Location */}
-              <div className="mt-3 flex items-center gap-1.5 text-xs text-[var(--md-text-muted)]">
-                <svg 
-                  width="14" 
-                  height="14" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  aria-hidden="true"
-                >
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-                <span className="truncate">{a.location}</span>
-              </div>
+              {/* Footer: Location + Tags */}
+              <div className="mt-4 border-t border-[var(--md-border-subtle)] pt-3">
+                {/* Location */}
+                <div className="flex items-center gap-1.5 text-xs text-[var(--md-text-muted)]">
+                  <LocationIcon />
+                  <span className="truncate">{a.location}</span>
+                </div>
 
-              {/* Tags */}
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {a.tags.map((t: ActivityTag) => (
-                  <span key={t} className="md-badge md-badge-turq">
-                    {t}
-                  </span>
-                ))}
+                {/* Tags */}
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {a.tags.map((t: ActivityTag) => (
+                    <span key={t} className="md-badge md-badge-turq">
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </article>
@@ -149,7 +183,7 @@ export function ActivityCardGrid({
       {/* Empty state */}
       {filtered.length === 0 && (
         <div className="mt-8 rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-1)] p-8 text-center">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--md-surface-2)]">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--md-surface-2)]">
             <svg 
               width="24" 
               height="24" 
@@ -170,7 +204,7 @@ export function ActivityCardGrid({
           <button
             type="button"
             onClick={() => { setTag("Все"); setBadge("Все"); }}
-            className="mt-3 text-sm font-medium text-[var(--md-dragons-orange)] transition-colors hover:text-[var(--md-dragons-orange-light)]"
+            className="mt-4 text-sm font-semibold uppercase tracking-wide text-[var(--md-dragons-orange)] transition-colors hover:text-[var(--md-dragons-orange-light)]"
           >
             Сбросить фильтры
           </button>

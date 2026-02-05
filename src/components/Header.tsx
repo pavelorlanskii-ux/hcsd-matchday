@@ -124,7 +124,7 @@ export function Header() {
   };
 
   return (
-    <header className="relative z-50 sticky top-0 border-b border-[var(--md-border)] bg-[var(--md-bg)]/90 backdrop-blur-lg">
+    <header className="relative z-50 sticky top-0 border-b border-[var(--md-border)] bg-[var(--md-bg)]/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-[var(--md-container)] items-center justify-between px-4 py-2 md:px-6 lg:px-8">
         {/* Logo */}
         <a

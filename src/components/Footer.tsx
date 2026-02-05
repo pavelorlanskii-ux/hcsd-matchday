@@ -51,8 +51,11 @@ const SOCIAL_LINKS = [
 ];
 
 export function Footer() {
+  // Use static year to avoid hydration mismatch
+  const currentYear = 2026;
+  
   return (
-    <footer className="border-t border-[var(--md-border)] bg-[var(--md-bg)]/90 backdrop-blur-lg">
+    <footer className="border-t border-[var(--md-border)] bg-[var(--md-bg)]/95 backdrop-blur-xl">
       {/* Partners Bar */}
       <div className="border-b border-[var(--md-border)]">
         <div className="mx-auto max-w-[var(--md-container)] px-4 py-6 md:px-6 lg:px-8">
@@ -115,7 +118,7 @@ export function Footer() {
               className="h-9 w-9 object-contain"
             />
             <div className="text-sm text-[var(--md-text-muted)]">
-              &copy; {new Date().getFullYear()} ХК Шанхай Дрэгонс. Все права защищены.
+              &copy; {currentYear} ХК Шанхай Дрэгонс. Все права защищены.
             </div>
           </div>
 
