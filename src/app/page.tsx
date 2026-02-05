@@ -34,48 +34,47 @@ export default function Page() {
           aria-hidden="true"
         />
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-[#041525]/70" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[var(--md-bg)]/75" aria-hidden="true" />
       </div>
 
-      {/* Decorative Clouds */}
+      {/* Decorative Clouds - subtle background elements */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
-        {/* Cloud top-left */}
         <Image
           src={CLOUDS.cloud14}
           alt=""
           width={280}
           height={180}
-          className="absolute -left-20 top-[15%] opacity-20"
+          className="absolute -left-20 top-[15%] opacity-15"
         />
-        {/* Cloud bottom-right */}
         <Image
           src={CLOUDS.cloud15}
           alt=""
           width={320}
           height={200}
-          className="absolute -right-24 bottom-[20%] opacity-15"
+          className="absolute -right-24 bottom-[20%] opacity-10"
         />
-        {/* Cloud middle-left */}
         <Image
           src={CLOUDS.cloud18}
           alt=""
           width={200}
           height={130}
-          className="absolute -left-12 top-[55%] opacity-10"
+          className="absolute -left-12 top-[55%] opacity-8"
         />
       </div>
 
-      {/* Skip Link */}
+      {/* Skip Link for accessibility */}
       <a href="#main-content" className="md-skip-link">
         Перейти к основному содержимому
       </a>
 
+      {/* Header */}
       <div className="relative z-20">
         <Header />
       </div>
 
+      {/* Main Content */}
       <main id="main-content" className="relative z-10 flex-1">
-        {/* Hero Section - Poster-like with dynamic background */}
+        {/* Hero Section */}
         <HeroSection
           title="Вечер хоккея и шоу на арене"
           subtitle="Приезжайте заранее, чтобы успеть на активности, сделать фото и поймать правильное матчевое настроение."
@@ -93,10 +92,10 @@ export default function Page() {
           />
         </HeroSection>
 
-        {/* Main container for remaining content */}
-        <div className="mx-auto w-full max-w-[1200px] px-6 py-2 space-y-16">
-          {/* BetBoom Odds Section - Featured Partner Block */}
-          <section id="odds">
+        {/* Main sections container with consistent spacing */}
+        <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+          {/* Partner Odds Section */}
+          <section id="odds" className="py-6 md:py-8">
             <PartnerOddsBar
               partner={matchday.partner}
               odds={matchday.odds}
@@ -104,12 +103,12 @@ export default function Page() {
           </section>
 
           {/* Highlight Section */}
-          <section id="highlight">
+          <section id="highlight" className="py-6 md:py-8">
             <HighlightBanner highlight={matchday.highlight} />
           </section>
 
           {/* Program Section */}
-          <section id="program">
+          <section id="program" className="py-8 md:py-10">
             <SectionHeader
               title="Программа вечера"
               subtitle="Фильтруйте по интересам и ориентирам. Все активности работают в указанное время."
@@ -123,11 +122,11 @@ export default function Page() {
             </div>
           </section>
 
-          {/* Partner Divider */}
-          <div className="md-partner-divider mx-auto mb-10 max-w-[200px] md:mb-14" aria-hidden="true" />
+          {/* Visual Divider */}
+          <div className="md-partner-divider mx-auto my-8 max-w-[180px] md:my-10" aria-hidden="true" />
 
           {/* Offers Section */}
-          <section id="offers">
+          <section id="offers" className="py-8 md:py-10">
             <SectionHeader
               title="Специальные предложения"
               subtitle="Партнерские предложения и бонусы для болельщиков."
@@ -138,12 +137,13 @@ export default function Page() {
           </section>
 
           {/* CTA Section */}
-          <section id="tickets">
+          <section id="tickets-cta" className="pb-10 pt-4 md:pb-12 md:pt-6">
             <CTASection />
           </section>
         </div>
       </main>
 
+      {/* Footer */}
       <div className="relative z-10">
         <Footer />
       </div>

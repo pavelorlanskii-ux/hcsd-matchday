@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Matchday - Shanghai Dragons",
-  description: "Вечер хоккея и шоу на арене. Программа активностей, специальные предложения и информация о матче.",
+  title: "Matchday | ХК Шанхай Дрэгонс - Вечер хоккея на арене",
+  description: "Программа матчевого дня: активности, специальные предложения, информация о матче и билеты. ХК Шанхай Дрэгонс - Приезжайте заранее!",
 };
 
 export default function RootLayout({

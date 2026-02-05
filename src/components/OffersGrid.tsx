@@ -1,5 +1,33 @@
 import type { Offer } from "@/data/matchday";
 
+function StarIcon() {
+  return (
+    <svg 
+      className="h-3 w-3" 
+      viewBox="0 0 24 24" 
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg 
+      className="h-4 w-4 transition-transform group-hover:translate-x-0.5" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2.5"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  );
+}
+
 export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
   const offers = props.offers ?? [];
   const partnerName = props.partnerName ?? "BetBoom";
@@ -9,7 +37,7 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
   }
 
   return (
-    <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
+    <div className="grid gap-4 md:grid-cols-2 md:gap-5">
       {offers.map((o) => {
         // Check if this offer is from the partner
         const isPartnerOffer = o.badge?.toLowerCase().includes(partnerName.toLowerCase()) || 
@@ -20,46 +48,38 @@ export function OffersGrid(props: { offers?: Offer[]; partnerName?: string }) {
         return (
           <article 
             key={o.id} 
-            className={`flex flex-col overflow-hidden ${isPartnerOffer ? "md-card-featured" : "md-card"} p-5 sm:p-6 md:p-7`}
+            className={`flex flex-col overflow-hidden ${isPartnerOffer ? "md-card-featured" : "md-card"}`}
           >
-            {/* Badge */}
-            {o.badge && (
-              <div className={`inline-flex w-fit ${isPartnerOffer ? "md-badge md-badge-partner" : "md-badge md-badge-yellow"}`}>
-                {isPartnerOffer && (
-                  <svg 
-                    className="mr-1.5 h-3 w-3" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2.5"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                  </svg>
-                )}
-                {o.badge}
-              </div>
-            )}
-            
-            {/* Title */}
-            <h3 className="md-title-card mt-4 line-clamp-2 text-[var(--md-text-primary)]">
-              {o.title}
-            </h3>
-            
-            {/* Description */}
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--md-text-secondary)] sm:text-base">
-              {o.description}
-            </p>
-            
-            {/* CTA */}
-            {o.link && (
-              <a
-                href={o.link.href}
-                className={`mt-5 w-full sm:w-auto ${isPartnerOffer ? "md-btn md-btn-partner md-btn-lg" : "md-btn md-btn-accent md-btn-lg"}`}
-              >
-                {o.link.label}
-              </a>
-            )}
+            <div className="flex flex-1 flex-col p-5 sm:p-6">
+              {/* Badge */}
+              {o.badge && (
+                <div className={`inline-flex w-fit ${isPartnerOffer ? "md-badge md-badge-partner" : "md-badge md-badge-yellow"}`}>
+                  {isPartnerOffer && <StarIcon />}
+                  {o.badge}
+                </div>
+              )}
+              
+              {/* Title */}
+              <h3 className="md-title-card mt-4 text-[var(--md-text-primary)]">
+                {o.title}
+              </h3>
+              
+              {/* Description */}
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--md-text-secondary)] sm:text-base sm:leading-relaxed">
+                {o.description}
+              </p>
+              
+              {/* CTA */}
+              {o.link && (
+                <a
+                  href={o.link.href}
+                  className={`group mt-5 inline-flex w-fit items-center gap-2 ${isPartnerOffer ? "md-btn md-btn-partner" : "md-btn md-btn-accent"}`}
+                >
+                  {o.link.label}
+                  <ArrowIcon />
+                </a>
+              )}
+            </div>
           </article>
         );
       })}

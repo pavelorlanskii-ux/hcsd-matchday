@@ -5,38 +5,32 @@ import Image from "next/image";
 
 const CLUB_LOGO = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_shanghai_dragons-rpqZlKvYrjv48TTGb7Qc3pkrbDbzZJ.png";
 
-function formatCountdown(ms: number) {
-  if (ms <= 0) return "Матч начался";
+function parseCountdown(ms: number) {
+  if (ms <= 0) return { d: "0", h: "0", m: "0", s: "0" };
   const total = Math.floor(ms / 1000);
   const d = Math.floor(total / 86400);
   const h = Math.floor((total % 86400) / 3600);
   const m = Math.floor((total % 3600) / 60);
-  
-  if (d > 0) return `${d}д ${h}ч ${m}м`;
-  if (h > 0) return `${h}ч ${m}м`;
-  return `${m}м`;
+  const s = total % 60;
+  return { 
+    d: String(d).padStart(2, "0"), 
+    h: String(h).padStart(2, "0"), 
+    m: String(m).padStart(2, "0"),
+    s: String(s).padStart(2, "0")
+  };
 }
 
 function CountdownUnit({ value, label }: { value: string; label: string }) {
   return (
-    <div className="flex flex-col items-center">
-      <span className="text-2xl font-bold tabular-nums text-[var(--md-dragons-orange)] sm:text-3xl lg:text-4xl">
-        {value}
-      </span>
-      <span className="mt-1 text-[10px] font-medium uppercase tracking-wider text-[var(--md-text-muted)] sm:text-xs">
-        {label}
-      </span>
+    <div className="md-countdown-unit">
+      <span className="md-countdown-value">{value}</span>
+      <span className="md-countdown-label">{label}</span>
     </div>
   );
 }
 
-function parseCountdown(ms: number) {
-  if (ms <= 0) return { d: "0", h: "0", m: "0" };
-  const total = Math.floor(ms / 1000);
-  const d = Math.floor(total / 86400);
-  const h = Math.floor((total % 86400) / 3600);
-  const m = Math.floor((total % 3600) / 60);
-  return { d: String(d), h: String(h), m: String(m) };
+function CountdownSeparator() {
+  return <span className="md-countdown-separator">:</span>;
 }
 
 export function MatchCard(props: {
@@ -51,15 +45,18 @@ export function MatchCard(props: {
   className?: string;
 }) {
   const target = useMemo(() => new Date(props.matchDateIso).getTime(), [props.matchDateIso]);
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(target - 1000 * 60 * 60 * 24); // Initialize with 1 day before target to avoid hydration mismatch
 
   useEffect(() => {
-    const t = setInterval(() => setNow(Date.now()), 30_000);
+    // Set actual time after mount
+    setNow(Date.now());
+    const t = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(t);
   }, []);
 
   const diff = target - now;
   const countdown = parseCountdown(diff);
+  const isMatchStarted = diff <= 0;
 
   const titleParts = props.title.split(" - ");
   const homeName = titleParts[0] ?? props.title;
@@ -68,36 +65,42 @@ export function MatchCard(props: {
   return (
     <article className={`md-card-hero overflow-hidden ${props.className || ""}`}>
       {/* Mobile Layout */}
-      <div className="flex flex-col gap-4 p-4 sm:p-5 lg:hidden">
-        {/* Date / League / Arena */}
-        <div className="space-y-1">
-          <div className="text-lg font-bold text-[var(--md-text-primary)]">{props.leftMetaLines[0]}</div>
-          <div className="flex flex-wrap items-center gap-2 text-sm text-[var(--md-text-muted)]">
-            <span>{props.leftMetaLines[1]}</span>
-            <span className="h-1 w-1 rounded-full bg-[var(--md-text-muted)]" aria-hidden="true" />
+      <div className="flex flex-col p-4 sm:p-5 lg:hidden">
+        {/* Match Meta: Date, League, Arena */}
+        <div className="mb-4 border-b border-[var(--md-border-subtle)] pb-4">
+          <div className="text-lg font-bold tracking-tight text-[var(--md-text-primary)]">
+            {props.leftMetaLines[0]}
+          </div>
+          <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-[var(--md-text-muted)]">
+            <span className="font-medium">{props.leftMetaLines[1]}</span>
+            <span className="h-1 w-1 rounded-full bg-[var(--md-text-muted)]/50" aria-hidden="true" />
             <span>{props.leftMetaLines[2]}</span>
           </div>
         </div>
 
         {/* Teams Block */}
-        <div className="rounded-xl bg-[var(--md-surface-2)] p-3.5">
+        <div className="rounded-xl bg-[var(--md-surface-2)]/80 p-4">
           <div className="flex items-center justify-between gap-3">
             {/* Home Team */}
             <div className="flex min-w-0 flex-1 flex-col items-center text-center">
-              <Image
-                src={CLUB_LOGO}
-                alt={homeName}
-                width={56}
-                height={56}
-                className="h-14 w-14 object-contain"
-              />
-              <div className="mt-2 text-[10px] font-medium uppercase tracking-wide text-[var(--md-text-muted)]">Хозяева</div>
-              <div className="mt-0.5 line-clamp-2 text-sm font-semibold text-[var(--md-text-primary)]">{homeName}</div>
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--md-surface-3)]">
+                <Image
+                  src={CLUB_LOGO}
+                  alt={homeName}
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 object-contain"
+                />
+              </div>
+              <div className="md-meta mt-2">Хозяева</div>
+              <div className="mt-1 line-clamp-2 text-sm font-semibold leading-tight text-[var(--md-text-primary)]">
+                {homeName}
+              </div>
             </div>
 
-            {/* VS */}
-            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--md-surface-3)] text-sm font-bold text-[var(--md-text-muted)]">
-              VS
+            {/* VS Divider */}
+            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-[var(--md-border)] bg-[var(--md-surface-1)]">
+              <span className="text-xs font-bold text-[var(--md-text-muted)]">VS</span>
             </div>
 
             {/* Away Team */}
@@ -105,40 +108,40 @@ export function MatchCard(props: {
               <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--md-surface-3)] text-xs font-bold text-[var(--md-text-secondary)]">
                 {props.awayLogoText.slice(0, 4).toUpperCase()}
               </div>
-              <div className="mt-2 text-[10px] font-medium uppercase tracking-wide text-[var(--md-text-muted)]">Гости</div>
-              <div className="mt-0.5 line-clamp-2 text-sm font-semibold text-[var(--md-text-primary)]">{awayName}</div>
+              <div className="md-meta mt-2">Гости</div>
+              <div className="mt-1 line-clamp-2 text-sm font-semibold leading-tight text-[var(--md-text-primary)]">
+                {awayName}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Countdown */}
-        <div className="rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-2)] p-3.5">
-          <div className="mb-2.5 text-center text-xs font-medium uppercase tracking-wider text-[var(--md-text-muted)]">До матча</div>
-          {diff > 0 ? (
-            <div className="flex items-center justify-center gap-6">
+        <div className="mt-4 rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
+          <div className="md-meta mb-3 text-center">До матча осталось</div>
+          {!isMatchStarted ? (
+            <div className="md-countdown">
               <CountdownUnit value={countdown.d} label="дней" />
-              <div className="text-xl text-[var(--md-text-muted)]">:</div>
+              <CountdownSeparator />
               <CountdownUnit value={countdown.h} label="часов" />
-              <div className="text-xl text-[var(--md-text-muted)]">:</div>
+              <CountdownSeparator />
               <CountdownUnit value={countdown.m} label="минут" />
+              <CountdownSeparator />
+              <CountdownUnit value={countdown.s} label="секунд" />
             </div>
           ) : (
-            <div className="text-center text-xl font-bold text-[var(--md-dragons-orange)]">Матч начался</div>
+            <div className="text-center text-xl font-bold uppercase tracking-wide text-[var(--md-dragons-orange)]">
+              Матч начался
+            </div>
           )}
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col gap-2.5">
-          <a
-            href={props.buyHref}
-            className="md-btn md-btn-primary md-btn-xl w-full"
-          >
+        <div className="mt-4 flex flex-col gap-2.5">
+          <a href={props.buyHref} className="md-btn md-btn-primary md-btn-xl w-full">
             Купить билеты
           </a>
-          <a
-            href={props.homeHref}
-            className="md-btn md-btn-secondary md-btn-lg w-full"
-          >
+          <a href={props.homeHref} className="md-btn md-btn-secondary md-btn-lg w-full">
             На главную
           </a>
         </div>
@@ -146,42 +149,56 @@ export function MatchCard(props: {
 
       {/* Desktop Layout */}
       <div className="hidden p-5 lg:block lg:p-6">
-        <div className="grid grid-cols-[1.2fr_1.8fr_1.2fr] items-center gap-5">
+        <div className="grid grid-cols-[1fr_1.6fr_1fr] items-center gap-6">
           {/* Left Column: Meta Info */}
-          <div className="space-y-1">
-            <div className="text-xl font-bold text-[var(--md-text-primary)]">{props.leftMetaLines[0]}</div>
-            <div className="text-sm text-[var(--md-text-muted)]">{props.leftMetaLines[1]}</div>
-            <div className="text-sm text-[var(--md-text-muted)]">{props.leftMetaLines[2]}</div>
+          <div className="pr-4">
+            <div className="text-xl font-bold tracking-tight text-[var(--md-text-primary)]">
+              {props.leftMetaLines[0]}
+            </div>
+            <div className="mt-2 space-y-0.5">
+              <div className="text-sm font-medium text-[var(--md-text-secondary)]">
+                {props.leftMetaLines[1]}
+              </div>
+              <div className="text-sm text-[var(--md-text-muted)]">
+                {props.leftMetaLines[2]}
+              </div>
+            </div>
           </div>
 
           {/* Middle Column: Teams */}
-          <div className="rounded-xl bg-[var(--md-surface-2)] p-4">
-            <div className="flex items-center justify-between gap-4">
+          <div className="rounded-xl bg-[var(--md-surface-2)]/80 p-5">
+            <div className="flex items-center justify-between gap-6">
               {/* Home Team */}
               <div className="flex min-w-0 flex-1 items-center gap-4">
-                <Image
-                  src={CLUB_LOGO}
-                  alt={homeName}
-                  width={64}
-                  height={64}
-                  className="h-16 w-16 shrink-0 object-contain"
-                />
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[var(--md-surface-3)]">
+                  <Image
+                    src={CLUB_LOGO}
+                    alt={homeName}
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 object-contain"
+                  />
+                </div>
                 <div className="min-w-0">
-                  <div className="text-[10px] font-medium uppercase tracking-wider text-[var(--md-text-muted)]">Хозяева</div>
-                  <div className="mt-0.5 truncate text-lg font-bold text-[var(--md-text-primary)]">{homeName}</div>
+                  <div className="md-meta">Хозяева</div>
+                  <div className="mt-1 truncate text-lg font-bold text-[var(--md-text-primary)]">
+                    {homeName}
+                  </div>
                 </div>
               </div>
 
-              {/* VS */}
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[var(--md-surface-3)] text-sm font-bold text-[var(--md-text-muted)]">
-                VS
+              {/* VS Divider */}
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-[var(--md-border)] bg-[var(--md-surface-1)]">
+                <span className="text-sm font-bold text-[var(--md-text-muted)]">VS</span>
               </div>
 
               {/* Away Team */}
               <div className="flex min-w-0 flex-1 items-center justify-end gap-4">
                 <div className="min-w-0 text-right">
-                  <div className="text-[10px] font-medium uppercase tracking-wider text-[var(--md-text-muted)]">Гости</div>
-                  <div className="mt-0.5 truncate text-lg font-bold text-[var(--md-text-primary)]">{awayName}</div>
+                  <div className="md-meta">Гости</div>
+                  <div className="mt-1 truncate text-lg font-bold text-[var(--md-text-primary)]">
+                    {awayName}
+                  </div>
                 </div>
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[var(--md-surface-3)] text-sm font-bold text-[var(--md-text-secondary)]">
                   {props.awayLogoText.slice(0, 4).toUpperCase()}
@@ -191,25 +208,27 @@ export function MatchCard(props: {
           </div>
 
           {/* Right Column: Countdown + CTAs */}
-          <div className="space-y-3">
+          <div className="pl-4">
             {/* Countdown */}
-            <div className="rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-2)] p-3.5">
-              <div className="mb-2 text-center text-[10px] font-medium uppercase tracking-wider text-[var(--md-text-muted)]">До матча</div>
-              {diff > 0 ? (
-                <div className="flex items-center justify-center gap-3">
+            <div className="rounded-xl border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
+              <div className="md-meta mb-2 text-center">До матча</div>
+              {!isMatchStarted ? (
+                <div className="md-countdown">
                   <CountdownUnit value={countdown.d} label="дн" />
-                  <span className="text-lg text-[var(--md-text-muted)]">:</span>
+                  <CountdownSeparator />
                   <CountdownUnit value={countdown.h} label="ч" />
-                  <span className="text-lg text-[var(--md-text-muted)]">:</span>
+                  <CountdownSeparator />
                   <CountdownUnit value={countdown.m} label="м" />
                 </div>
               ) : (
-                <div className="text-center text-xl font-bold text-[var(--md-dragons-orange)]">Матч начался</div>
+                <div className="text-center text-lg font-bold uppercase text-[var(--md-dragons-orange)]">
+                  Матч начался
+                </div>
               )}
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col gap-2.5">
+            <div className="mt-3 flex flex-col gap-2">
               <a href={props.buyHref} className="md-btn md-btn-primary md-btn-lg w-full">
                 Купить билеты
               </a>
