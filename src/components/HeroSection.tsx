@@ -1,10 +1,4 @@
 import type { ReactNode } from "react";
-import Image from "next/image";
-
-// Decorative assets
-const DRAGON_DECOR = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D1%88%D0%B45-N70vGIGcYsRhoMzoxUNDvBpzKo5fmd.png";
-const KNOT_DECOR = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D1%88%D0%B44-i6HOPbV1q2QQQNxjBK0DxtMivUbk2A.png";
-const STAR_DECOR = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D1%88%D0%B42-mj9Nys3ZnuwlzOz5EhOVtKVzjgybUr.png";
 
 type HeroSectionProps = {
   title: string;
@@ -16,41 +10,6 @@ type HeroSectionProps = {
 export function HeroSection({ title, subtitle, partnerName, children }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden pt-8 pb-6 md:pt-12 md:pb-8 lg:pt-16 lg:pb-10" id="tickets">
-      {/* Decorative Elements */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        {/* Dragon - right side */}
-        <Image
-          src={DRAGON_DECOR}
-          alt=""
-          width={500}
-          height={350}
-          className="md-decor-dragon absolute -right-20 top-[10%] w-[400px] opacity-[0.025] md:w-[500px] lg:w-[600px]"
-        />
-        {/* Knot - left bottom */}
-        <Image
-          src={KNOT_DECOR}
-          alt=""
-          width={180}
-          height={180}
-          className="md-decor-knot absolute -left-10 bottom-[15%] hidden w-[150px] opacity-[0.04] md:block lg:w-[180px]"
-        />
-        {/* Star accents */}
-        <Image
-          src={STAR_DECOR}
-          alt=""
-          width={60}
-          height={60}
-          className="md-decor-star absolute left-[15%] top-[20%] w-[40px] opacity-[0.06] lg:w-[60px]"
-        />
-        <Image
-          src={STAR_DECOR}
-          alt=""
-          width={40}
-          height={40}
-          className="md-decor-star absolute right-[20%] bottom-[30%] hidden w-[30px] opacity-[0.05] md:block"
-        />
-      </div>
-
       {/* Content */}
       <div className="md-container relative z-10">
         <div className="flex flex-col">
