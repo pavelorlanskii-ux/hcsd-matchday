@@ -125,22 +125,22 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-[#1a2744]">
-      {/* Background Dragon Watermark */}
+      {/* Background Dragon Watermark - full-bleed from left edge */}
       <div 
-        className="pointer-events-none absolute -left-[5%] top-1/2 h-[120%] w-[50%] -translate-y-1/2 opacity-[0.12] md:opacity-[0.15] lg:-left-[2%] lg:w-[45%]" 
+        className="pointer-events-none absolute left-0 top-1/2 z-0 h-[140%] w-[65%] -translate-y-1/2 opacity-[0.12] md:h-[130%] md:w-[60%] md:opacity-[0.15] lg:h-[150%] lg:w-[55%]" 
         aria-hidden="true"
       >
         <Image
           src={DRAGON_ORNAMENT}
           alt=""
           fill
-          className="object-contain object-center"
+          className="object-contain object-left"
           priority
         />
       </div>
 
       {/* Main Footer Content */}
-      <div className="relative mx-auto max-w-[1400px] px-6 py-12 lg:px-12 lg:py-16">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 py-12 lg:px-12 lg:py-16">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
           {/* Left: Logo */}
           <div className="flex-shrink-0">
@@ -214,7 +214,7 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative border-t border-white/10">
+      <div className="relative z-10 border-t border-white/10">
         <div className="mx-auto flex max-w-[1400px] items-center px-6 py-5 lg:px-12">
           {/* Copyright */}
           <div className="text-[13px] text-white/60 lg:text-sm">
