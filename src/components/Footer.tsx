@@ -1,45 +1,44 @@
+"use client";
+
 import Image from "next/image";
 
-const CLUB_LOGO = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_shanghai_dragons-rpqZlKvYrjv48TTGb7Qc3pkrbDbzZJ.png";
-
-const PARTNERS = [
-  { name: "BetBoom", href: "https://betboom.ru", featured: true },
-  { name: "Дом Книги", href: "#" },
-  { name: "Imperial Orchestra", href: "#" },
-];
+const CLUB_LOGO = "/logo_dragons.png";
+const DRAGON_ORNAMENT = "/ornaments/dragons.png";
 
 const NAV_COLUMNS = [
   {
-    title: "Команда",
+    title: "КОМАНДА",
     links: [
-      { label: "Состав", href: "https://hc-dragons.com/team/roster" },
+      { label: "Основной состав", href: "https://hc-dragons.com/team/roster" },
       { label: "Тренерский штаб", href: "https://hc-dragons.com/team/coaches" },
-      { label: "Статистика", href: "https://hc-dragons.com/team/stats" },
+      { label: "Персонал", href: "https://hc-dragons.com/team/staff" },
     ],
   },
   {
-    title: "Клуб",
+    title: "КЛУБ",
     links: [
       { label: "О клубе", href: "https://hc-dragons.com/club/about" },
-      { label: "История", href: "https://hc-dragons.com/club/history" },
-      { label: "Арена", href: "https://hc-dragons.com/club/arena" },
+      { label: "Руководство", href: "https://hc-dragons.com/club/management" },
       { label: "Контакты", href: "https://hc-dragons.com/club/contacts" },
+      { label: "Арена", href: "https://hc-dragons.com/club/arena" },
+      { label: "Документы", href: "https://hc-dragons.com/club/documents" },
     ],
   },
   {
-    title: "Сезон",
+    title: "СЕЗОН",
     links: [
+      { label: "Результаты матчей", href: "https://hc-dragons.com/season/results" },
       { label: "Календарь", href: "https://hc-dragons.com/season/calendar" },
       { label: "Турнирная таблица", href: "https://hc-dragons.com/season/standings" },
-      { label: "Результаты", href: "https://hc-dragons.com/season/results" },
     ],
   },
   {
-    title: "Медиа",
+    title: "МЕДИА",
     links: [
-      { label: "Фото", href: "https://hc-dragons.com/media/photo" },
-      { label: "Видео", href: "https://hc-dragons.com/media/video" },
-      { label: "Подкасты", href: "https://hc-dragons.com/media/podcasts" },
+      { label: "Новости", href: "https://hc-dragons.com/media/news" },
+      { label: "Фотогалерея", href: "https://hc-dragons.com/media/photo" },
+      { label: "Dragons.TV", href: "https://hc-dragons.com/media/tv" },
+      { label: "Программки", href: "https://hc-dragons.com/media/programs" },
     ],
   },
 ];
@@ -48,111 +47,186 @@ const SOCIAL_LINKS = [
   { label: "VK", href: "https://vk.com/hcdragons", icon: "vk" },
   { label: "Telegram", href: "https://t.me/hcdragons", icon: "tg" },
   { label: "YouTube", href: "https://youtube.com/@hcdragons", icon: "yt" },
+  { label: "Facebook", href: "https://facebook.com/hcdragons", icon: "fb" },
+  { label: "TikTok", href: "https://tiktok.com/@hcdragons", icon: "tt" },
+  { label: "Weibo", href: "#", icon: "weibo" },
 ];
 
-export function Footer() {
-  // Use static year to avoid hydration mismatch
-  const currentYear = 2026;
-  
+// SVG Icons
+function VKIcon({ className }: { className?: string }) {
   return (
-    <footer className="border-t border-[var(--md-border)] bg-[var(--md-bg)]/95 backdrop-blur-xl">
-      {/* Partners Bar */}
-      <div className="border-b border-[var(--md-border)]">
-        <div className="mx-auto max-w-[var(--md-container)] px-4 py-6 md:px-6 lg:px-8">
-          <div className="mb-3 text-[10px] font-semibold uppercase tracking-wider text-[var(--md-text-muted)]">
-            Партнёры клуба
-          </div>
-          <div className="flex flex-wrap items-center gap-3 md:gap-4">
-            {PARTNERS.map((partner) => (
-              <a
-                key={partner.name}
-                href={partner.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                  partner.featured 
-                    ? "border border-[var(--md-partner-accent)]/20 bg-[var(--md-partner-accent)]/10 text-[var(--md-partner-accent)] hover:bg-[var(--md-partner-accent)]/15" 
-                    : "bg-[var(--md-surface-1)] text-[var(--md-text-secondary)] hover:bg-[var(--md-surface-2)] hover:text-[var(--md-text-primary)]"
-                }`}
-              >
-                {partner.name}
-              </a>
-            ))}
-          </div>
-        </div>
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.77 19.05c-6.05 0-9.5-4.15-9.65-11.05h3.03c.1 5.05 2.32 7.18 4.08 7.62V8h2.86v4.35c1.73-.19 3.55-2.18 4.16-4.35h2.86c-.47 2.67-2.45 4.66-3.86 5.48 1.41.65 3.67 2.37 4.52 5.57h-3.15c-.66-2.06-2.3-3.65-4.53-3.87v3.87h-.32z"/>
+    </svg>
+  );
+}
+
+function TelegramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.787l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z"/>
+    </svg>
+  );
+}
+
+function YouTubeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>
+  );
+}
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+  );
+}
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+    </svg>
+  );
+}
+
+function WeiboIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zM9.05 17.219c-.384.616-1.208.884-1.829.598-.612-.284-.79-.991-.405-1.593.379-.595 1.176-.862 1.791-.581.622.285.822.986.443 1.576zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.1-.313-.378-.177-.609.138-.227.437-.346.672-.247.238.103.321.378.194.603zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.643 4.318-.259 5.096-2.012.763-1.696-.175-3.752-2.125-4.316zM17.278 8.242c-.315-.096-.531-.169-.384-.603.317-.949.35-1.767.006-2.351-.646-1.098-2.418-1.038-4.469-.028l-.006.001c0 .001-.45.196-.334-.145.223-.669.189-1.229-.129-1.554-.72-.732-2.64.026-4.29 1.692C6.16 6.782 5.31 8.404 5.31 9.835c0 2.736 3.51 4.399 6.94 4.399 4.509 0 7.507-2.617 7.507-4.697 0-1.263-1.065-1.979-2.479-2.295zM21.77 7.579c-.643-1.896-2.28-3.034-3.834-2.545-.487.153-.757.682-.604 1.17.153.49.685.76 1.172.609.758-.242 1.572.389 1.925 1.471.348 1.081.034 2.21-.716 2.575-.467.228-.664.786-.436 1.252.226.468.787.666 1.253.439 1.484-.726 2.078-2.866 1.24-4.971zm-1.629-.93c-.309-.912-1.099-1.454-1.773-1.242-.188.06-.342.197-.434.379-.111.219-.126.482-.04.725.166.486.563.852 1.024.852.205 0 .416-.07.594-.21l.014-.01c.238-.197.455-.539.58-.91.049-.146.065-.33.035-.584z"/>
+    </svg>
+  );
+}
+
+function SocialIcon({ icon, className }: { icon: string; className?: string }) {
+  switch (icon) {
+    case "vk":
+      return <VKIcon className={className} />;
+    case "tg":
+      return <TelegramIcon className={className} />;
+    case "yt":
+      return <YouTubeIcon className={className} />;
+    case "fb":
+      return <FacebookIcon className={className} />;
+    case "tt":
+      return <TikTokIcon className={className} />;
+    case "weibo":
+      return <WeiboIcon className={className} />;
+    default:
+      return null;
+  }
+}
+
+export function Footer() {
+  const currentYear = 2026;
+
+  return (
+    <footer className="relative overflow-hidden bg-[#1a2744]">
+      {/* Background Dragon Ornament */}
+      <div className="pointer-events-none absolute -left-32 top-0 h-full w-[600px] opacity-[0.15]" aria-hidden="true">
+        <Image
+          src={DRAGON_ORNAMENT}
+          alt=""
+          fill
+          className="object-contain object-left"
+        />
       </div>
 
-      {/* Navigation */}
-      <div className="mx-auto max-w-[var(--md-container)] px-4 py-10 md:px-6 md:py-12 lg:px-8 lg:py-14">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {NAV_COLUMNS.map((column) => (
-            <div key={column.title}>
-              <h3 className="mb-4 text-sm font-semibold text-[var(--md-text-primary)]">{column.title}</h3>
-              <ul className="space-y-2.5">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-[var(--md-text-muted)] transition-colors hover:text-[var(--md-dragons-orange)]"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+      {/* Main Footer Content */}
+      <div className="relative mx-auto max-w-[1400px] px-6 py-12 lg:px-12 lg:py-16">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
+          {/* Left: Logo */}
+          <div className="flex-shrink-0">
+            <Image
+              src={CLUB_LOGO}
+              alt="Шанхай Дрэгонс"
+              width={140}
+              height={140}
+              className="h-28 w-28 object-contain lg:h-[140px] lg:w-[140px]"
+            />
+          </div>
+
+          {/* Center: Navigation Columns */}
+          <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4 lg:gap-x-12">
+            {NAV_COLUMNS.map((column) => (
+              <div key={column.title}>
+                <h3 className="mb-4 text-[15px] font-bold uppercase tracking-wide text-[#e85d04] lg:mb-5 lg:text-base">
+                  {column.title}
+                </h3>
+                <ul className="space-y-2.5 lg:space-y-3">
+                  {column.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="text-[14px] text-white/80 transition-colors hover:text-white lg:text-[15px]"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Right: Social Links Grid */}
+          <div className="flex-shrink-0">
+            <div className="grid grid-cols-4 gap-2 lg:grid-cols-4 lg:gap-2.5">
+              {SOCIAL_LINKS.slice(0, 4).map((social) => (
+                <a
+                  key={social.icon}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-12 w-12 items-center justify-center border border-[#e85d04] text-[#e85d04] transition-colors hover:bg-[#e85d04] hover:text-white lg:h-14 lg:w-14"
+                  aria-label={social.label}
+                >
+                  <SocialIcon icon={social.icon} className="h-5 w-5 lg:h-6 lg:w-6" />
+                </a>
+              ))}
             </div>
-          ))}
+            <div className="mt-2 grid grid-cols-4 gap-2 lg:mt-2.5 lg:gap-2.5">
+              {SOCIAL_LINKS.slice(4, 6).map((social) => (
+                <a
+                  key={social.icon}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-12 w-12 items-center justify-center border border-[#e85d04] text-[#e85d04] transition-colors hover:bg-[#e85d04] hover:text-white lg:h-14 lg:w-14"
+                  aria-label={social.label}
+                >
+                  <SocialIcon icon={social.icon} className="h-5 w-5 lg:h-6 lg:w-6" />
+                </a>
+              ))}
+              {/* Empty placeholders to maintain grid alignment */}
+              <div className="h-12 w-12 lg:h-14 lg:w-14" aria-hidden="true" />
+              <div className="h-12 w-12 lg:h-14 lg:w-14" aria-hidden="true" />
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-[var(--md-border)]">
-        <div className="mx-auto flex max-w-[var(--md-container)] flex-col items-center justify-between gap-4 px-4 py-6 md:flex-row md:px-6 lg:px-8">
-          {/* Logo + Copyright */}
-          <div className="flex items-center gap-3">
-            <Image
-              src={CLUB_LOGO}
-              alt="Шанхай Дрэгонс"
-              width={36}
-              height={36}
-              className="h-9 w-9 object-contain"
-            />
-            <div className="text-sm text-[var(--md-text-muted)]">
-              &copy; {currentYear} ХК Шанхай Дрэгонс. Все права защищены.
-            </div>
+      <div className="relative border-t border-white/10">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-4 px-6 py-5 sm:flex-row lg:px-12">
+          {/* Copyright */}
+          <div className="text-[13px] text-white/60 lg:text-sm">
+            &copy; {currentYear} Хоккейный клуб «Шанхай Дрэгонс»
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-2">
-            {SOCIAL_LINKS.map((social) => (
-              <a
-                key={social.icon}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--md-border)] text-[var(--md-text-muted)] transition-colors hover:border-[var(--md-border-hover)] hover:text-[var(--md-dragons-orange)]"
-                aria-label={social.label}
-              >
-                {social.icon === "vk" && (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12.77 19.05c-6.05 0-9.5-4.15-9.65-11.05h3.03c.1 5.05 2.32 7.18 4.08 7.62V8h2.86v4.35c1.73-.19 3.55-2.18 4.16-4.35h2.86c-.47 2.67-2.45 4.66-3.86 5.48 1.41.65 3.67 2.37 4.52 5.57h-3.15c-.66-2.06-2.3-3.65-4.53-3.87v3.87h-.32z"/>
-                  </svg>
-                )}
-                {social.icon === "tg" && (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.05-.2s-.16-.04-.23-.02c-.1.02-1.62 1.03-4.58 3.03-.43.3-.82.44-1.17.43-.39-.01-1.13-.22-1.68-.4-.68-.22-1.22-.34-1.17-.72.02-.2.31-.4.87-.6 3.45-1.5 5.75-2.49 6.9-2.97 3.29-1.37 3.97-1.61 4.42-1.62.1 0 .32.02.46.13.12.09.15.21.17.3-.01.06.01.24 0 .37z"/>
-                  </svg>
-                )}
-                {social.icon === "yt" && (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                )}
-              </a>
-            ))}
+          {/* Credits */}
+          <div className="flex items-center gap-2 text-[13px] text-white/60 lg:text-sm">
+            <span>Создание сайта</span>
+            <span className="font-semibold text-white/80">2Dit</span>
           </div>
         </div>
       </div>
+
+      {/* Orange Bottom Line */}
+      <div className="h-1 w-full bg-[#e85d04]" aria-hidden="true" />
     </footer>
   );
 }
