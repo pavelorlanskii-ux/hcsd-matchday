@@ -105,11 +105,11 @@ export function MatchCard(props: {
 
             {/* Away Team */}
             <div className="flex min-w-0 flex-1 flex-col items-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--md-surface-3)] text-xs font-bold text-[var(--md-text-secondary)]">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[var(--md-surface-3)] text-xs font-bold text-[var(--md-text-secondary)]">
                 {props.awayLogoText.slice(0, 4).toUpperCase()}
               </div>
               <div className="md-meta mt-2">Гости</div>
-              <div className="mt-1 line-clamp-2 text-sm font-semibold leading-tight text-[var(--md-text-primary)]">
+              <div className="mt-1 w-full truncate text-sm font-semibold leading-tight text-[var(--md-text-primary)]">
                 {awayName}
               </div>
             </div>
@@ -196,7 +196,7 @@ export function MatchCard(props: {
               <div className="flex min-w-0 flex-1 items-center justify-end gap-4">
                 <div className="min-w-0 text-right">
                   <div className="md-meta">Гости</div>
-                  <div className="mt-1 truncate text-lg font-bold text-[var(--md-text-primary)]">
+                  <div className="mt-1 truncate whitespace-nowrap md:whitespace-normal md:break-words md:line-clamp-2 md:[text-overflow:clip] text-lg font-bold text-[var(--md-text-primary)]">
                     {awayName}
                   </div>
                 </div>
