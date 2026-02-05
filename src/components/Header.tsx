@@ -102,7 +102,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full bg-[#1a2744]">
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 xl:h-[80px] xl:px-8">
         {/* Left: Grid button + Logo */}
-        <div className="flex items-center gap-3 xl:gap-5">
+        <div className="flex flex-shrink-0 items-center gap-3 xl:gap-4">
           {/* Grid/Menu Button */}
           <button
             type="button"
@@ -138,12 +138,12 @@ export function Header() {
         </div>
 
         {/* Center: Navigation (Desktop) */}
-        <nav className="hidden items-center gap-1 xl:flex" aria-label="Основная навигация">
+        <nav className="hidden max-w-[480px] items-center gap-0 overflow-hidden xl:flex" aria-label="Основная навигация">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="px-5 py-2 font-[var(--font-horta)] text-[20px] font-normal uppercase leading-[1.2] tracking-wide text-white/90 transition-colors hover:text-white"
+              className="whitespace-nowrap px-3 py-2 font-[var(--font-horta)] text-[15px] font-normal uppercase leading-5 tracking-wide text-white/90 transition-colors hover:text-white"
             >
               {item.label}
             </a>
@@ -151,9 +151,9 @@ export function Header() {
         </nav>
 
         {/* Right: Lang + CTAs + Social */}
-        <div className="flex items-center gap-2 xl:gap-4">
+        <div className="flex flex-shrink-0 items-center gap-2 xl:gap-3">
           {/* Language Switcher */}
-          <div className="hidden items-center gap-3 text-[17px] xl:flex">
+          <div className="hidden items-center gap-2 text-[14px] xl:flex">
             <button
               type="button"
               onClick={() => setLang("ru")}
@@ -175,12 +175,12 @@ export function Header() {
           </div>
 
           {/* CTA Buttons (Desktop) */}
-          <div className="hidden items-center gap-[6px] xl:flex">
+          <div className="hidden items-center gap-1 xl:flex">
             {CTA_BUTTONS.map((btn) => (
               <a
                 key={btn.label}
                 href={btn.href}
-                className={`flex h-[47px] w-[107px] items-center justify-center font-[var(--font-horta)] text-[16px] font-normal uppercase tracking-wider transition-colors ${
+                className={`flex h-[40px] w-[90px] items-center justify-center font-[var(--font-horta)] text-[14px] font-normal uppercase tracking-wide transition-colors ${
                   btn.variant === "vip"
                     ? "bg-white text-[#e85d04] hover:bg-white/90"
                     : btn.variant === "tickets"
@@ -194,17 +194,17 @@ export function Header() {
           </div>
 
           {/* Social Icons (Desktop) */}
-          <div className="hidden items-center gap-2 xl:flex">
+          <div className="hidden items-center gap-1 xl:flex">
             {SOCIAL_LINKS.map((social) => (
               <a
                 key={social.icon}
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-10 w-10 items-center justify-center text-white/80 transition-colors hover:text-white"
+                className="flex h-8 w-8 items-center justify-center text-white/80 transition-colors hover:text-white"
                 aria-label={social.label}
               >
-                {social.icon === "vk" ? <VKIcon className="h-6 w-6" /> : <TelegramIcon className="h-6 w-6" />}
+                {social.icon === "vk" ? <VKIcon className="h-5 w-5" /> : <TelegramIcon className="h-5 w-5" />}
               </a>
             ))}
           </div>
