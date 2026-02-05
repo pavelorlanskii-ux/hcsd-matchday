@@ -23,7 +23,7 @@ export function CTASection() {
             <h2 className="md-headline-section text-balance text-[var(--md-text-primary)]">
               Увидимся на арене
             </h2>
-            <p className="mt-2 text-sm text-[var(--md-text-secondary)] sm:text-base">
+            <p className="md-subtitle mt-2">
               Приходите заранее, чтобы всё успеть
             </p>
           </div>

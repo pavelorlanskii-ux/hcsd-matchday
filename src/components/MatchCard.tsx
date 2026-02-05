@@ -69,13 +69,13 @@ export function MatchCard(props: {
       <div className="flex flex-col p-4 sm:p-5 lg:hidden">
         {/* Match Meta: Date, League, Arena */}
         <div className="mb-4 border-b border-[var(--md-border-subtle)] pb-4">
-          <div className="font-[var(--font-horta)] text-xl font-normal tracking-wide text-[var(--md-text-primary)]">
+          <div className="font-[var(--font-horta)] text-[1.375rem] tracking-[0.04em] text-[var(--md-text-primary)]">
             {props.leftMetaLines[0]}
           </div>
-          <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs text-[var(--md-text-muted)]">
-            <span className="font-medium">{props.leftMetaLines[1]}</span>
-            <span className="h-1 w-1 rounded-full bg-[var(--md-text-muted)]/50" aria-hidden="true" />
-            <span>{props.leftMetaLines[2]}</span>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <span className="md-label-lg text-[var(--md-text-secondary)]">{props.leftMetaLines[1]}</span>
+            <span className="h-1 w-1 rounded-full bg-[var(--md-text-muted)]" aria-hidden="true" />
+            <span className="md-label text-[var(--md-text-muted)]">{props.leftMetaLines[2]}</span>
           </div>
         </div>
 
@@ -93,15 +93,15 @@ export function MatchCard(props: {
                   className="h-16 w-16 object-contain"
                 />
               </div>
-              <div className="md-meta mt-2 text-[10px]">Хозяева</div>
-              <div className="mt-1 line-clamp-2 min-h-[2.5rem] font-[var(--font-horta)] text-[15px] font-normal uppercase leading-tight tracking-wide text-[var(--md-text-primary)]">
+              <div className="md-meta mt-2">Хозяева</div>
+              <div className="mt-1 line-clamp-2 min-h-[2.5rem] font-[var(--font-horta)] text-[0.9375rem] uppercase leading-snug tracking-[0.05em] text-[var(--md-text-primary)]">
                 {homeName}
               </div>
             </div>
 
             {/* VS Divider */}
             <div className="mt-4 flex h-10 w-10 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
-              <span className="font-[var(--font-horta)] text-sm font-normal text-[var(--md-text-muted)]">VS</span>
+              <span className="font-[var(--font-horta)] text-[0.8125rem] tracking-widest text-[var(--md-text-muted)]">VS</span>
             </div>
 
             {/* Away Team */}
@@ -115,8 +115,8 @@ export function MatchCard(props: {
                   className="h-16 w-16 object-contain"
                 />
               </div>
-              <div className="md-meta mt-2 text-[10px]">Гости</div>
-              <div className="mt-1 line-clamp-2 min-h-[2.5rem] font-[var(--font-horta)] text-[15px] font-normal uppercase leading-tight tracking-wide text-[var(--md-text-primary)]">
+              <div className="md-meta mt-2">Гости</div>
+              <div className="mt-1 line-clamp-2 min-h-[2.5rem] font-[var(--font-horta)] text-[0.9375rem] uppercase leading-snug tracking-[0.05em] text-[var(--md-text-primary)]">
                 {awayName}
               </div>
             </div>
@@ -125,7 +125,7 @@ export function MatchCard(props: {
 
         {/* Countdown */}
         <div className="mt-4 border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-4">
-          <div className="md-meta mb-3 text-center">До матча осталось</div>
+          <div className="md-label mb-3 text-center">До матча осталось</div>
           {!isMatchStarted ? (
             <div className="md-countdown">
               <CountdownUnit value={countdown.d} label="дней" />
@@ -137,7 +137,7 @@ export function MatchCard(props: {
               <CountdownUnit value={countdown.s} label="секунд" />
             </div>
           ) : (
-            <div className="text-center font-[var(--font-horta)] text-xl font-normal uppercase tracking-widest text-[var(--md-dragons-orange)]">
+            <div className="text-center font-[var(--font-horta)] text-[1.25rem] uppercase tracking-[0.1em] text-[var(--md-dragons-orange)]">
               Матч начался
             </div>
           )}
@@ -159,14 +159,14 @@ export function MatchCard(props: {
         <div className="flex items-center gap-4">
           {/* Left Column: Meta Info - compact */}
           <div className="w-[160px] flex-shrink-0">
-            <div className="font-[var(--font-horta)] text-xl font-normal tracking-wide text-[var(--md-text-primary)]">
+            <div className="font-[var(--font-horta)] text-[1.375rem] tracking-[0.04em] text-[var(--md-text-primary)]">
               {props.leftMetaLines[0]}
             </div>
-            <div className="mt-1.5 space-y-0.5">
-              <div className="text-[13px] font-medium leading-snug text-[var(--md-text-secondary)]">
+            <div className="mt-2 space-y-1">
+              <div className="md-label-lg text-[var(--md-text-secondary)]">
                 {props.leftMetaLines[1]}
               </div>
-              <div className="text-[13px] leading-snug text-[var(--md-text-muted)]">
+              <div className="md-label text-[var(--md-text-muted)]">
                 {props.leftMetaLines[2]}
               </div>
             </div>
@@ -186,15 +186,15 @@ export function MatchCard(props: {
                     className="h-[92px] w-[92px] object-contain"
                   />
                 </div>
-                <div className="md-meta mt-1.5 text-[9px]">Хозяева</div>
-                <div className="mt-0.5 whitespace-nowrap font-[var(--font-horta)] text-[16px] font-normal uppercase leading-snug tracking-wide text-[var(--md-text-primary)]">
+                <div className="md-meta mt-1.5">Хозяева</div>
+                <div className="mt-0.5 whitespace-nowrap font-[var(--font-horta)] text-[1rem] uppercase leading-snug tracking-[0.05em] text-[var(--md-text-primary)]">
                   {homeName}
                 </div>
               </div>
 
               {/* VS Divider */}
               <div className="mt-8 flex h-10 w-10 flex-shrink-0 items-center justify-center border border-[var(--md-border)] bg-[var(--md-surface-1)]">
-                <span className="font-[var(--font-horta)] text-sm font-normal text-[var(--md-text-muted)]">VS</span>
+                <span className="font-[var(--font-horta)] text-[0.8125rem] tracking-widest text-[var(--md-text-muted)]">VS</span>
               </div>
 
               {/* Away Team - vertical: logo -> label -> name */}
@@ -208,8 +208,8 @@ export function MatchCard(props: {
                     className="h-20 w-20 object-contain"
                   />
                 </div>
-                <div className="md-meta mt-1.5 text-[9px]">Гости</div>
-                <div className="mt-0.5 whitespace-nowrap font-[var(--font-horta)] text-[16px] font-normal uppercase leading-snug tracking-wide text-[var(--md-text-primary)]">
+                <div className="md-meta mt-1.5">Гости</div>
+                <div className="mt-0.5 whitespace-nowrap font-[var(--font-horta)] text-[1rem] uppercase leading-snug tracking-[0.05em] text-[var(--md-text-primary)]">
                   {awayName}
                 </div>
               </div>
@@ -220,7 +220,7 @@ export function MatchCard(props: {
           <div className="w-[240px] flex-shrink-0">
             {/* Countdown */}
             <div className="border border-[var(--md-border)] bg-[var(--md-surface-2)]/60 p-3">
-              <div className="md-meta mb-1.5 text-center text-[10px]">До матча</div>
+              <div className="md-label mb-1.5 text-center">До матча</div>
               {!isMatchStarted ? (
                 <div className="md-countdown">
                   <CountdownUnit value={countdown.d} label="дн" />
@@ -232,7 +232,7 @@ export function MatchCard(props: {
                   <CountdownUnit value={countdown.s} label="с" />
                 </div>
               ) : (
-                <div className="text-center font-[var(--font-horta)] text-lg font-normal uppercase tracking-widest text-[var(--md-dragons-orange)]">
+                <div className="text-center font-[var(--font-horta)] text-[1.125rem] uppercase tracking-[0.1em] text-[var(--md-dragons-orange)]">
                   Матч начался
                 </div>
               )}
@@ -240,10 +240,10 @@ export function MatchCard(props: {
 
             {/* Buttons */}
             <div className="mt-2.5 flex flex-col gap-1.5">
-              <a href={props.buyHref} className="md-btn md-btn-primary w-full text-[13px]">
+              <a href={props.buyHref} className="md-btn md-btn-primary w-full">
                 Купить билеты
               </a>
-              <a href={props.homeHref} className="md-btn md-btn-secondary w-full text-[12px]">
+              <a href={props.homeHref} className="md-btn md-btn-secondary w-full">
                 На главную
               </a>
             </div>

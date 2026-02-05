@@ -105,9 +105,9 @@ export function ActivityCardGrid({
       </div>
 
       {/* Results count */}
-      <div className="mt-4 text-sm text-[var(--md-text-muted)]">
+      <div className="md-body-sm mt-4 text-[var(--md-text-muted)]">
         {filtered.length > 0 ? (
-          <span>Найдено: <span className="font-medium text-[var(--md-text-secondary)]">{filtered.length}</span></span>
+          <span>Найдено: <span className="text-[var(--md-text-secondary)]">{filtered.length}</span></span>
         ) : null}
       </div>
 
@@ -172,14 +172,14 @@ export function ActivityCardGrid({
               </h3>
               
               {/* Description */}
-              <p className="mt-2 flex-1 line-clamp-3 text-sm leading-relaxed text-[var(--md-text-secondary)]">
+              <p className="md-body-sm mt-2 flex-1 line-clamp-3">
                 {a.description}
               </p>
 
               {/* Footer: Location + Tags */}
               <div className="mt-4 border-t border-[var(--md-border-subtle)] pt-3">
                 {/* Location */}
-                <div className="flex items-center gap-1.5 text-xs text-[var(--md-text-muted)]">
+                <div className="flex items-center gap-1.5 text-[0.75rem] text-[var(--md-text-muted)]">
                   <LocationIcon />
                   <span className="truncate">{a.location}</span>
                 </div>
@@ -216,13 +216,13 @@ export function ActivityCardGrid({
               <path d="m21 21-4.35-4.35"/>
             </svg>
           </div>
-          <p className="text-sm text-[var(--md-text-muted)]">
+          <p className="md-body-sm text-[var(--md-text-muted)]">
             Нет активностей по выбранным фильтрам
           </p>
           <button
             type="button"
             onClick={() => { setTag("Все"); setBadge("Все"); }}
-            className="mt-4 text-sm font-semibold uppercase tracking-wide text-[var(--md-dragons-orange)] transition-colors hover:text-[var(--md-dragons-orange-light)]"
+            className="mt-4 font-[var(--font-horta)] text-[0.8125rem] uppercase tracking-[0.1em] text-[var(--md-dragons-orange)] transition-colors hover:text-[var(--md-dragons-orange-light)]"
           >
             Сбросить фильтры
           </button>

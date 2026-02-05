@@ -31,10 +31,47 @@
   --md-surface-3: rgba(46, 61, 92, 0.9);
   --md-surface-hover: rgba(56, 71, 102, 0.95);
   
-  /* ===== Text ===== */
+  /* ===== Text Colors ===== */
   --md-text-primary: #FFFFFF;
-  --md-text-secondary: #C5D4E3;
-  --md-text-muted: #8A9DB2;
+  --md-text-secondary: rgba(255, 255, 255, 0.75);
+  --md-text-muted: rgba(255, 255, 255, 0.5);
+  --md-text-disabled: rgba(255, 255, 255, 0.35);
+
+  /* ===== Typography Scale ===== */
+  --md-font-size-xs: 0.6875rem;     /* 11px */
+  --md-font-size-sm: 0.75rem;       /* 12px */
+  --md-font-size-base: 0.875rem;    /* 14px */
+  --md-font-size-md: 0.9375rem;     /* 15px */
+  --md-font-size-lg: 1rem;          /* 16px */
+  --md-font-size-xl: 1.125rem;      /* 18px */
+  --md-font-size-2xl: 1.375rem;     /* 22px */
+  --md-font-size-3xl: 1.75rem;      /* 28px */
+  --md-font-size-4xl: 2.25rem;      /* 36px */
+  --md-font-size-5xl: 3rem;         /* 48px */
+  --md-font-size-6xl: 3.5rem;       /* 56px */
+
+  /* ===== Line Heights ===== */
+  --md-leading-none: 1;
+  --md-leading-tight: 1.1;
+  --md-leading-snug: 1.25;
+  --md-leading-normal: 1.4;
+  --md-leading-relaxed: 1.55;
+  --md-leading-loose: 1.7;
+
+  /* ===== Letter Spacing ===== */
+  --md-tracking-tight: -0.01em;
+  --md-tracking-normal: 0;
+  --md-tracking-wide: 0.02em;
+  --md-tracking-wider: 0.05em;
+  --md-tracking-widest: 0.1em;
+  --md-tracking-caps: 0.12em;
+
+  /* ===== Font Weights ===== */
+  --md-font-normal: 400;
+  --md-font-medium: 500;
+  --md-font-semibold: 600;
+  --md-font-bold: 700;
+  --md-font-extrabold: 800;
   
   /* ===== Borders & Shadows ===== */
   --md-border: rgba(255, 255, 255, 0.1);
@@ -176,9 +213,9 @@ body {
   padding-inline: 1.5rem;
   border-radius: 0;
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
+  font-size: var(--md-font-size-sm);
+  font-weight: var(--md-font-normal);
+  letter-spacing: var(--md-tracking-widest);
   text-transform: uppercase;
   transition: all 0.15s ease;
   cursor: pointer;
@@ -192,13 +229,13 @@ body {
 .md-btn-lg {
   height: var(--md-button-height-lg);
   padding-inline: 1.75rem;
-  font-size: 0.875rem;
+  font-size: var(--md-font-size-sm);
 }
 
 .md-btn-xl {
   height: var(--md-button-height-xl);
   padding-inline: 2rem;
-  font-size: 0.9375rem;
+  font-size: var(--md-font-size-base);
 }
 
 .md-btn-primary {
@@ -252,10 +289,10 @@ body {
   padding: 0.375rem 0.75rem;
   border-radius: 0;
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
+  font-size: var(--md-font-size-xs);
+  font-weight: var(--md-font-normal);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--md-tracking-widest);
   white-space: nowrap;
 }
 
@@ -300,8 +337,10 @@ body {
   border: 1px solid var(--md-border);
   background: rgba(255, 255, 255, 0.04);
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
+  font-size: var(--md-font-size-sm);
+  font-weight: var(--md-font-normal);
+  letter-spacing: var(--md-tracking-wider);
+  text-transform: uppercase;
   color: var(--md-text-secondary);
   transition: all 0.15s ease;
   cursor: pointer;
@@ -387,63 +426,140 @@ html {
   top: 1rem;
 }
 
-/* ===== Text Utilities ===== */
+/* ===== Typography System ===== */
+
+/* Hero Headline - largest, most impactful */
 .md-headline-hero {
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: 0.04em;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  font-weight: var(--md-font-normal);
+  line-height: var(--md-leading-none);
+  letter-spacing: var(--md-tracking-wide);
   text-transform: uppercase;
 }
 
+/* Section Headlines - clear hierarchy */
 .md-headline-section {
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: clamp(1.375rem, 2.75vw, 2rem);
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: 0.05em;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--md-font-normal);
+  line-height: var(--md-leading-tight);
+  letter-spacing: var(--md-tracking-wider);
   text-transform: uppercase;
 }
 
+/* Card Titles - compact but readable */
 .md-title-card {
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: clamp(1.125rem, 2vw, 1.375rem);
-  font-weight: 400;
-  line-height: 1.25;
-  letter-spacing: 0.03em;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: var(--md-font-normal);
+  line-height: var(--md-leading-snug);
+  letter-spacing: var(--md-tracking-wide);
 }
 
+/* Body text - readable, comfortable */
 .md-body {
-  font-size: 0.9375rem;
-  line-height: 1.55;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--md-font-size-md);
+  font-weight: var(--md-font-normal);
+  line-height: var(--md-leading-relaxed);
   color: var(--md-text-secondary);
 }
 
 .md-body-sm {
-  font-size: 0.8125rem;
-  line-height: 1.55;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--md-font-size-base);
+  font-weight: var(--md-font-normal);
+  line-height: var(--md-leading-relaxed);
   color: var(--md-text-secondary);
 }
 
+/* Meta text - small uppercase labels */
 .md-meta {
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
+  font-size: var(--md-font-size-xs);
+  font-weight: var(--md-font-normal);
+  letter-spacing: var(--md-tracking-caps);
   text-transform: uppercase;
   color: var(--md-text-muted);
 }
 
-/* ===== Kicker / Label ===== */
+/* Label / Kicker - filter labels, categories */
 .md-kicker,
 .md-label {
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
+  font-size: var(--md-font-size-xs);
+  font-weight: var(--md-font-normal);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--md-tracking-caps);
   color: var(--md-text-muted);
+}
+
+/* Large Label - prominent labels */
+.md-label-lg {
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: var(--md-font-size-sm);
+  font-weight: var(--md-font-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--md-tracking-widest);
+  color: var(--md-text-muted);
+}
+
+/* Navigation text - menu items */
+.md-nav {
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: var(--md-font-size-md);
+  font-weight: var(--md-font-normal);
+  letter-spacing: var(--md-tracking-wider);
+  text-transform: uppercase;
+}
+
+/* Data display - numbers, stats */
+.md-data {
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: var(--md-font-size-xl);
+  font-weight: var(--md-font-bold);
+  line-height: var(--md-leading-none);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtitle - hero subtitles, descriptions */
+.md-subtitle {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--md-font-size-base);
+  font-weight: var(--md-font-normal);
+  line-height: var(--md-leading-relaxed);
+  color: var(--md-text-secondary);
+}
+
+@media (min-width: 768px) {
+  .md-subtitle {
+    font-size: var(--md-font-size-md);
+  }
+}
+
+/* Footer column headings */
+.md-footer-heading {
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: var(--md-font-size-sm);
+  font-weight: var(--md-font-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--md-tracking-widest);
+  color: var(--md-dragons-orange);
+}
+
+/* Footer links */
+.md-footer-link {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--md-font-size-base);
+  font-weight: var(--md-font-normal);
+  line-height: var(--md-leading-normal);
+  color: var(--md-text-secondary);
+  transition: color 0.15s ease;
+}
+
+.md-footer-link:hover {
+  color: var(--md-text-primary);
 }
 
 /* ===== Mobile Optimization ===== */
@@ -498,9 +614,9 @@ html {
 
 .md-countdown-value {
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 1;
+  font-size: var(--md-font-size-3xl);
+  font-weight: var(--md-font-normal);
+  line-height: var(--md-leading-none);
   font-variant-numeric: tabular-nums;
   color: var(--md-dragons-orange);
 }
@@ -508,16 +624,17 @@ html {
 .md-countdown-label {
   margin-top: 0.125rem;
   font-family: var(--font-horta), system-ui, sans-serif;
-  font-size: 0.625rem;
-  font-weight: 400;
+  font-size: var(--md-font-size-xs);
+  font-weight: var(--md-font-normal);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--md-tracking-caps);
   color: var(--md-text-muted);
 }
 
 .md-countdown-separator {
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-family: var(--font-horta), system-ui, sans-serif;
+  font-size: var(--md-font-size-base);
+  font-weight: var(--md-font-bold);
   color: var(--md-text-muted);
   opacity: 0.5;
   margin-top: -0.5rem;
@@ -529,19 +646,19 @@ html {
     gap: 0.375rem;
   }
   .md-countdown-value {
-    font-size: 1.75rem;
+    font-size: var(--md-font-size-3xl);
   }
   .md-countdown-unit {
     width: 2.75rem;
   }
   .md-countdown-separator {
-    font-size: 1rem;
+    font-size: var(--md-font-size-lg);
   }
 }
 
 @media (min-width: 1024px) {
   .md-countdown-value {
-    font-size: 1.5rem;
+    font-size: var(--md-font-size-2xl);
   }
   .md-countdown-unit {
     width: 2.5rem;
@@ -550,7 +667,7 @@ html {
     font-size: 0.5625rem;
   }
   .md-countdown-separator {
-    font-size: 0.875rem;
+    font-size: var(--md-font-size-base);
   }
 }
 

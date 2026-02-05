@@ -145,11 +145,14 @@ function SocialIcon({ icon, className }: { icon: string; className?: string }) {
 export function Footer() {
   const currentYear = 2026;
 
+  // Mobile social links (first 6 for 3x2 grid)
+  const MOBILE_SOCIAL_LINKS = SOCIAL_LINKS.slice(0, 6);
+
   return (
     <footer className="relative overflow-hidden bg-[#1a2744]">
       {/* Background Dragon Watermark - full-bleed from left edge */}
       <div 
-        className="pointer-events-none absolute left-0 top-1/2 z-0 h-[140%] w-[65%] -translate-y-1/2 opacity-[0.12] md:h-[130%] md:w-[60%] md:opacity-[0.15] lg:h-[150%] lg:w-[55%]" 
+        className="pointer-events-none absolute left-0 top-1/2 z-0 h-[140%] w-[65%] -translate-y-1/2 opacity-[0.08] sm:opacity-[0.12] md:h-[130%] md:w-[60%] md:opacity-[0.15] lg:h-[150%] lg:w-[55%]" 
         aria-hidden="true"
       >
         <Image
@@ -161,8 +164,49 @@ export function Footer() {
         />
       </div>
 
-      {/* Main Footer Content */}
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 py-12 lg:px-12 lg:py-16">
+      {/* ===== MOBILE FOOTER LAYOUT (< 640px) ===== */}
+      <div className="relative z-10 px-5 py-8 sm:hidden">
+        {/* Top Row: Logo + Social Grid 3x2 */}
+        <div className="flex items-center justify-between gap-4">
+          {/* Left: Large Circular Logo */}
+          <div className="flex-shrink-0">
+            <Image
+              src={CLUB_LOGO}
+              alt="Шанхай Дрэгонс"
+              width={100}
+              height={100}
+              className="h-[100px] w-[100px] object-contain"
+            />
+          </div>
+
+          {/* Right: Social Links Grid 3x2 */}
+          <div className="grid grid-cols-3 gap-[10px]">
+            {MOBILE_SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.icon}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-[52px] w-[52px] items-center justify-center border border-[#e85d04] text-[#e85d04] transition-colors hover:bg-[#e85d04] hover:text-white active:bg-[#e85d04] active:text-white"
+                aria-label={social.label}
+              >
+                <SocialIcon icon={social.icon} className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-6 text-[0.875rem] leading-relaxed text-white/70">
+          &copy; {currentYear} Хоккейный клуб «Шанхай Дрэгонс»
+        </div>
+
+        {/* Divider Line */}
+        <div className="mt-4 h-px w-full bg-white/15" aria-hidden="true" />
+      </div>
+
+      {/* ===== TABLET/DESKTOP FOOTER LAYOUT (>= 640px) ===== */}
+      <div className="relative z-10 mx-auto hidden max-w-[1400px] px-6 py-12 sm:block lg:px-12 lg:py-16">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
           {/* Left: Logo */}
           <div className="flex-shrink-0">
@@ -179,7 +223,7 @@ export function Footer() {
           <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4 lg:gap-x-12">
             {NAV_COLUMNS.map((column) => (
               <div key={column.title}>
-                <h3 className="mb-4 text-[15px] font-bold uppercase tracking-wide text-[#e85d04] lg:mb-5 lg:text-base">
+                <h3 className="md-footer-heading mb-4 lg:mb-5">
                   {column.title}
                 </h3>
                 <ul className="space-y-2.5 lg:space-y-3">
@@ -187,7 +231,7 @@ export function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-[14px] text-white/80 transition-colors hover:text-white lg:text-[15px]"
+                        className="md-footer-link"
                       >
                         {link.label}
                       </a>
@@ -232,11 +276,11 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-white/10">
+      {/* Bottom Bar - Tablet/Desktop only */}
+      <div className="relative z-10 hidden border-t border-white/10 sm:block">
         <div className="mx-auto flex max-w-[1400px] items-center px-6 py-5 lg:px-12">
           {/* Copyright */}
-          <div className="text-[13px] text-white/60 lg:text-sm">
+          <div className="text-[0.8125rem] leading-relaxed text-[var(--md-text-muted)] lg:text-[0.875rem]">
             &copy; {currentYear} Хоккейный клуб «Шанхай Дрэгонс»
           </div>
         </div>
