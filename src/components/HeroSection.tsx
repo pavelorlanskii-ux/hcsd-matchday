@@ -9,7 +9,7 @@ type HeroSectionProps = {
 
 export function HeroSection({ title, subtitle, partnerName, children }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden pt-10 pb-8 md:pt-14 md:pb-10 lg:pt-20 lg:pb-12" id="tickets">
+    <section className="relative overflow-hidden pt-10 pb-10 md:pt-14 md:pb-12 lg:pt-20 lg:pb-16" id="tickets">
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-[1200px] px-5 sm:px-6 lg:px-8">
         <div className="flex flex-col">

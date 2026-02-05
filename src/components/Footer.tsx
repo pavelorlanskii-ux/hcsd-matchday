@@ -207,7 +207,7 @@ export function Footer() {
       </div>
 
       {/* ===== TABLET/DESKTOP FOOTER LAYOUT (>= 640px) ===== */}
-      <div className="relative z-10 mx-auto hidden max-w-[1400px] px-8 py-14 sm:block lg:px-14 lg:py-20">
+      <div className="relative z-10 mx-auto hidden max-w-[1200px] px-6 py-14 sm:block lg:px-8 lg:py-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
           {/* Left: Logo */}
           <div className="flex-shrink-0">
@@ -279,7 +279,7 @@ export function Footer() {
 
       {/* Bottom Bar - Tablet/Desktop only */}
       <div className="relative z-10 hidden border-t border-white/10 sm:block">
-        <div className="mx-auto flex max-w-[1400px] items-center px-6 py-5 lg:px-12">
+        <div className="mx-auto flex max-w-[1200px] items-center px-6 py-5 lg:px-8">
           {/* Copyright */}
           <div className="text-[0.8125rem] leading-relaxed text-[var(--md-text-muted)] lg:text-[0.875rem]">
             &copy; {currentYear} Хоккейный клуб «Шанхай Дрэгонс»

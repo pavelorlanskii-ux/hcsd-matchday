@@ -94,7 +94,7 @@ export default function Page() {
         </HeroSection>
 
         {/* Main sections container with consistent spacing */}
-        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-8 px-5 sm:px-6 md:gap-10 lg:px-8">
+        <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-5 sm:px-6 md:gap-14 lg:px-8">
           {/* Partner Odds Section */}
           <section id="odds">
             <PartnerOddsBar
@@ -135,7 +135,7 @@ export default function Page() {
           </section>
 
           {/* CTA Section */}
-          <section id="tickets-cta" className="pb-8 md:pb-10">
+          <section id="tickets-cta" className="pb-10 md:pb-14">
             <CTASection />
           </section>
         </div>

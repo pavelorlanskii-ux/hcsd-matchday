@@ -99,7 +99,7 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#1a2744]">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#1a2744]">
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 xl:h-[80px] xl:px-8">
         {/* Left: Grid button + Logo */}
         <div className="flex flex-shrink-0 items-center gap-3 xl:gap-4">
@@ -175,12 +175,12 @@ export function Header() {
           </div>
 
           {/* CTA Buttons (Desktop) */}
-          <div className="hidden items-center gap-1 xl:flex">
+          <div className="hidden items-center gap-1.5 xl:flex">
             {CTA_BUTTONS.map((btn) => (
               <a
                 key={btn.label}
                 href={btn.href}
-                className={`flex h-[40px] w-[90px] items-center justify-center font-[var(--font-horta)] text-[12px] uppercase tracking-[0.1em] transition-colors ${
+                className={`flex h-[42px] min-w-[88px] items-center justify-center px-4 font-[var(--font-horta)] text-[13px] uppercase tracking-[0.1em] transition-colors ${
                   btn.variant === "vip"
                     ? "bg-white text-[#e85d04] hover:bg-white/90"
                     : btn.variant === "tickets"

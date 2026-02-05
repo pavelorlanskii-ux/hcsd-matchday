@@ -39,7 +39,8 @@ export function HighlightBanner({ highlight }: HighlightBannerProps) {
               </span>
             )}
             <div
-              className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[var(--md-dragons-turq)]/30 bg-[var(--md-dragons-turq)]/10"
+              className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
+              style={{ border: '1px solid rgba(0, 184, 230, 0.3)', background: 'rgba(0, 184, 230, 0.1)' }}
               aria-hidden="true"
             >
               <Image
@@ -65,13 +66,13 @@ export function HighlightBanner({ highlight }: HighlightBannerProps) {
             </div>
 
             {/* Title */}
-            <h2 className="md-headline-section mt-5 text-balance text-[var(--md-text-primary)]">
+            <h2 className="md-headline-section mt-5 text-balance text-[var(--md-text-primary)] md:mt-6">
               {highlight.title}
             </h2>
 
             {/* Description */}
             {highlight.description && (
-              <p className="md-subtitle mt-5 max-w-2xl text-pretty">
+              <p className="md-subtitle mt-4 max-w-2xl text-pretty md:mt-5">
                 {highlight.description}
               </p>
             )}
@@ -80,7 +81,8 @@ export function HighlightBanner({ highlight }: HighlightBannerProps) {
           {/* Dragon icon - hidden on mobile (shown in header row), visible on md+ */}
           <div className="hidden shrink-0 items-center justify-center md:flex">
             <div
-              className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[var(--md-dragons-turq)]/30 bg-[var(--md-dragons-turq)]/10"
+              className="relative flex h-20 w-20 items-center justify-center rounded-full"
+              style={{ border: '1px solid rgba(0, 184, 230, 0.3)', background: 'rgba(0, 184, 230, 0.1)' }}
               aria-hidden="true"
             >
               <Image
