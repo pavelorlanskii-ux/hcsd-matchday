@@ -143,8 +143,7 @@ export function Header() {
             <a
               key={item.label}
               href={item.href}
-              className="px-5 py-2 text-[19px] font-normal leading-[1.2] text-white/90 transition-colors hover:text-white"
-              style={{ fontFamily: "Roboto, sans-serif" }}
+              className="px-5 py-2 font-[var(--font-horta)] text-[20px] font-normal uppercase leading-[1.2] tracking-wide text-white/90 transition-colors hover:text-white"
             >
               {item.label}
             </a>
@@ -181,7 +180,7 @@ export function Header() {
               <a
                 key={btn.label}
                 href={btn.href}
-                className={`flex h-[47px] w-[107px] items-center justify-center text-[15px] font-bold uppercase tracking-wide transition-colors ${
+                className={`flex h-[47px] w-[107px] items-center justify-center font-[var(--font-horta)] text-[16px] font-normal uppercase tracking-wider transition-colors ${
                   btn.variant === "vip"
                     ? "bg-white text-[#e85d04] hover:bg-white/90"
                     : btn.variant === "tickets"
@@ -308,7 +307,7 @@ export function Header() {
                       <a
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className="text-xl font-bold uppercase tracking-wide text-[#e85d04] transition-colors hover:text-[#f07b2f]"
+                        className="font-[var(--font-horta)] text-2xl font-normal uppercase tracking-wider text-[#e85d04] transition-colors hover:text-[#f07b2f]"
                       >
                         {item.label}
                       </a>
@@ -325,14 +324,14 @@ export function Header() {
                     <a
                       href="#tickets"
                       onClick={() => setMobileOpen(false)}
-                      className="flex h-12 flex-1 items-center justify-center bg-[#e85d04] text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#f07b2f]"
+                      className="flex h-12 flex-1 items-center justify-center bg-[#e85d04] font-[var(--font-horta)] text-[15px] font-normal uppercase tracking-wider text-white transition-colors hover:bg-[#f07b2f]"
                     >
                       БИЛЕТЫ
                     </a>
                     <a
                       href="https://hc-dragons.com/vip"
                       onClick={() => setMobileOpen(false)}
-                      className="flex h-12 flex-1 items-center justify-center border border-white/30 bg-transparent text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10"
+                      className="flex h-12 flex-1 items-center justify-center border border-white/30 bg-transparent font-[var(--font-horta)] text-[15px] font-normal uppercase tracking-wider text-white transition-colors hover:bg-white/10"
                     >
                       VIP
                     </a>
@@ -357,7 +356,7 @@ export function Header() {
                     <a
                       href="https://hc-dragons.com/shop"
                       onClick={() => setMobileOpen(false)}
-                      className="flex h-12 flex-1 items-center justify-center bg-[#f5a623] text-sm font-bold uppercase tracking-wide text-[#1a2744] transition-colors hover:bg-[#ffc107]"
+                      className="flex h-12 flex-1 items-center justify-center bg-[#f5a623] font-[var(--font-horta)] text-[15px] font-normal uppercase tracking-wider text-[#1a2744] transition-colors hover:bg-[#ffc107]"
                     >
                       МАГАЗИН
                     </a>
