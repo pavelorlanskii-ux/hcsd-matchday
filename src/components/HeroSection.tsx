@@ -11,7 +11,7 @@ export function HeroSection({ title, subtitle, partnerName, children }: HeroSect
   return (
     <section className="relative overflow-hidden pt-8 pb-6 md:pt-12 md:pb-8 lg:pt-16 lg:pb-10" id="tickets">
       {/* Content */}
-      <div className="md-container relative z-10">
+      <div className="relative z-10 mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col">
           {/* Text Block */}
           <div className="max-w-2xl lg:max-w-3xl">
