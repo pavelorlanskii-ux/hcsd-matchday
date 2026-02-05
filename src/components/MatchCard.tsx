@@ -6,7 +6,7 @@ import Image from "next/image";
 const CLUB_LOGO = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_shanghai_dragons-rpqZlKvYrjv48TTGb7Qc3pkrbDbzZJ.png";
 
 function parseCountdown(ms: number) {
-  if (ms <= 0) return { d: "0", h: "0", m: "0", s: "0" };
+  if (ms <= 0) return { d: "00", h: "00", m: "00", s: "00" };
   const total = Math.floor(ms / 1000);
   const d = Math.floor(total / 86400);
   const h = Math.floor((total % 86400) / 3600);
@@ -219,6 +219,8 @@ export function MatchCard(props: {
                   <CountdownUnit value={countdown.h} label="ч" />
                   <CountdownSeparator />
                   <CountdownUnit value={countdown.m} label="м" />
+                  <CountdownSeparator />
+                  <CountdownUnit value={countdown.s} label="с" />
                 </div>
               ) : (
                 <div className="text-center text-lg font-bold uppercase text-[var(--md-dragons-orange)]">
